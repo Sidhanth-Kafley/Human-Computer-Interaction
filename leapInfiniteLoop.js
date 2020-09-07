@@ -27,11 +27,27 @@ function HandleHand(hand){
 function HandleFinger(finger){
   for(var i=0; i<finger.length; i++){
     if(finger[i].type === 1){
-      console.log(finger[i]);
-      console.log(finger[i].tipPosition);
+      // console.log(finger[i]);
+      // console.log(finger[i].tipPosition);
       var x = finger[i].tipPosition[0];
       var y = window.innerHeight-finger[i].tipPosition[1];
       var z = finger[i].tipPosition[2];
+      if(x<rawXMin){
+        rawXMin = x;
+        console.log(rawXMin);
+      }
+      if(x>rawXMax){
+        rawXMax = x;
+        console.log(rawXMax);
+      }
+      if(y<rawYMin){
+        rawYMin = y;
+        console.log(rawYMin);
+      }
+      if(y>rawYMax){
+        rawYMax = y;
+        console.log(rawYMax);
+      }
       circle(x, y, 100);
     }
   }
