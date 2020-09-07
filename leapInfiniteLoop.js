@@ -12,7 +12,10 @@ Leap.loop(controllerOptions, function(frame)
   // circle(x+randomIntegerX, y+randomIntegerY, 100);
   if(frame.hands.length === 1){
     var hand = frame.hands[0];
+    var fingers = hand.fingers;
     console.log(hand);
+    console.log(fingers);
+
   }
 
 }
