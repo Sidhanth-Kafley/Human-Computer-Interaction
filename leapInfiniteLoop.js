@@ -29,6 +29,7 @@ function HandleFinger(finger){
   for(var i=0; i<finger.length; i++){
     if(finger[i].type === 1){
       console.log(finger[i]);
+      console.log(finger[i].tipPosition);
     }
   }
 }
