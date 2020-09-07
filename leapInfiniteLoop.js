@@ -7,7 +7,8 @@ var y = window.innerHeight/2;
 
 Leap.loop(controllerOptions, function(frame)
 {
-  circle(x, y, 100);
+  var randomInteger = Math.floor(Math.random()*2) - 1;
+  circle(x+randomInteger, y, 100);
   console.log(i);
   i++;
 }
