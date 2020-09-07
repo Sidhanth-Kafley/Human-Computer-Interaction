@@ -28,7 +28,7 @@ function HandleFinger(finger){
       console.log(finger[i]);
       console.log(finger[i].tipPosition);
       var x = finger[i].tipPosition[0];
-      var y = finger[i].tipPosition[1];
+      var y = window.innerHeight-finger[i].tipPosition[1];
       var z = finger[i].tipPosition[2];
       circle(x, y, 100);
     }
