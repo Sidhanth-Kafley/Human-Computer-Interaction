@@ -7,6 +7,7 @@ var y = window.innerHeight/2;
 
 Leap.loop(controllerOptions, function(frame)
 {
+  circle(x, y, 100);
   console.log(i);
   i++;
 }
