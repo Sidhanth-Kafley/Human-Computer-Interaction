@@ -21,10 +21,14 @@ function HandleFrame(frame){
 }
 
 function HandleHand(hand){
-  var fingers = hand.fingers;
-  for(var i=0; i<fingers.length; i++){
-    if(fingers[i].type === 1){
-      console.log(fingers[i]);
+  var finger = hand.fingers;
+  HandleFinger(finger)
+}
+
+function HandleFinger(finger){
+  for(var i=0; i<finger.length; i++){
+    if(finger[i].type === 1){
+      console.log(finger[i]);
     }
   }
 }
