@@ -1,7 +1,9 @@
 var controllerOptions = {};
 
-// var x = window.innerWidth/2;
-// var y = window.innerHeight/2;
+var rawXMin = 2000;
+var rawXMax = 10;
+var rawYMin = 2000;
+var rawYMax = 10;
 
 Leap.loop(controllerOptions, function(frame)
 {
