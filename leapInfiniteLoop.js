@@ -16,7 +16,9 @@ Leap.loop(controllerOptions, function(frame)
     // console.log(hand);
     // console.log(fingers);
     for(var i=0; i<fingers.length; i++){
-      console.log(fingers[i]);
+      if(fingers[i].type === 1){
+        console.log(fingers[i]);
+      }
     }
 
   }
