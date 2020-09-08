@@ -45,7 +45,18 @@ function HandleFinger(finger){
         rawYMax = y;
       }
       console.log(rawXMax, rawXMin, rawYMax, rawYMin);
-      circle(x, y, 100);
+
+      var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
+
+      //I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
+      // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+      // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
+
+
+
+
+
+      circle(newX, y, 100);
     }
   }
 }
