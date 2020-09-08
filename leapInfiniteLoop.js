@@ -52,11 +52,9 @@ function HandleFinger(finger){
       // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
       // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
 
+      var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
 
-
-
-
-      circle(newX, y, 100);
+      circle(newX, newY, 100);
     }
   }
 }
