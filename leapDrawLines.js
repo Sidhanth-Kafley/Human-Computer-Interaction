@@ -61,6 +61,10 @@ function HandleFinger(finger){
 
 function HandleBone(bone){
   for(var j=0; j<bone.length; j++){
-    console.log(bone[j]);
+    //console.log(bone[j]);
+    var x = bone[j].nextJoint[0];
+    var y = window.innerHeight-bone[j].nextJoint[1];
+    var z = bone[j].nextJoint[2];
+    console.log(x,y,z);
   }
 }
