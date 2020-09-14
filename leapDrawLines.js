@@ -26,9 +26,8 @@ function HandleHand(hand){
 
 function HandleFinger(finger){
   for(var i=0; i<finger.length; i++){
-    for(var j=0; j<finger[i].bones.length; j++){
-      console.log(finger[i].bones[j]);
-    }
+    var bone = finger[i].bones;
+    HandleBone(bone);
     // var x = finger[i].tipPosition[0];
     // var y = window.innerHeight-finger[i].tipPosition[1];
     // var z = finger[i].tipPosition[2];
@@ -57,5 +56,11 @@ function HandleFinger(finger){
 
     //circle(newX, newY, 100);
 
+  }
+}
+
+function HandleBone(bone){
+  for(var j=0; j<bone.length; j++){
+    console.log(bone[j]);
   }
 }
