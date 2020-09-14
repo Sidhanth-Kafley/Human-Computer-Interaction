@@ -42,9 +42,7 @@ function HandleBone(bone){
     var z = bone[j].nextJoint[2];
 
     var newTip = TransformCoordinates(x, y);
-
     var newTipX = newTip[0];
-
     var newTipY = newTip[1];
 
     var x1 = bone[j].prevJoint[0];
@@ -52,9 +50,7 @@ function HandleBone(bone){
     var z1 = bone[j].prevJoint[2];
 
     var newBase = TransformCoordinates(x1, y1);
-
     var newBaseX = newBase[0];
-
     var newBaseY = newBase[1];
 
     line(newTipX, newTipY, newBaseX, newBaseY);
