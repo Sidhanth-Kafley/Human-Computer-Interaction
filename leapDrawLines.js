@@ -27,14 +27,15 @@ function HandleHand(hand){
 function HandleFinger(finger){
   for(var i=0; i<finger.length; i++){
     var bone = finger[i].bones;
-    HandleBone(bone);
+    var weight=1;
+    HandleBone(bone, weight);
     // var x = finger[i].tipPosition[0];
     // var y = window.innerHeight-finger[i].tipPosition[1];
     // var z = finger[i].tipPosition[2];
   }
 }
 
-function HandleBone(bone){
+function HandleBone(bone, weight){
   for(var j=0; j<bone.length; j++){
     //console.log(bone[j]);
     var x = bone[j].nextJoint[0];
@@ -53,7 +54,22 @@ function HandleBone(bone){
     var newBaseX = newBase[0];
     var newBaseY = newBase[1];
 
+    if(bone[j].type === 0){
+      weight = 10;
+    }
+    else if(bone[j].type === 1){
+      weight = 7;
+    }
+    else if(bone[j].type === 2){
+      weight = 5;
+    }
+    else if(bone[j].type === 3){
+      weight = 2;
+    }
+
+    strokeWeight(weight);
     line(newTipX, newTipY, newBaseX, newBaseY);
+
   }
 }
 
