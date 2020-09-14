@@ -64,6 +64,33 @@ function HandleBone(bone){
 
     var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
 
-    circle(newX, newY, 100);
+    var x1 = bone[j].prevJoint[0];
+    var y1 = window.innerHeight-bone[j].prevJoint[1];
+    var z1 = bone[j].prevJoint[2];
+
+    if(x<rawXMin){
+      rawXMin = x1;
+    }
+    if(x>rawXMax){
+      rawXMax = x1;
+    }
+    if(y<rawYMin){
+      rawYMin = y1;
+    }
+    if(y>rawYMax){
+      rawYMax = y1;
+    }
+    console.log(rawXMax, rawXMin, rawYMax, rawYMin);
+
+
+    var newBaseX = ((x1-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
+
+    // I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
+    // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+    // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
+
+    var newBaseY = ((y1-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
+
+    line(newX, newY, newBaseX, newBaseY);
   }
 }
