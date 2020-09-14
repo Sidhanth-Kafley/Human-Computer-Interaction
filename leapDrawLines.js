@@ -26,30 +26,34 @@ function HandleHand(hand){
 
 function HandleFinger(finger){
   for(var i=0; i<finger.length; i++){
-    var x = finger[i].tipPosition[0];
-    var y = window.innerHeight-finger[i].tipPosition[1];
-    var z = finger[i].tipPosition[2];
-    if(x<rawXMin){
-      rawXMin = x;
+    for(var j=0; j<finger[i].bones.length; j++){
+      console.log(finger[i].bones[j]);
     }
-    if(x>rawXMax){
-      rawXMax = x;
-    }
-    if(y<rawYMin){
-      rawYMin = y;
-    }
-    if(y>rawYMax){
-      rawYMax = y;
-    }
-    console.log(rawXMax, rawXMin, rawYMax, rawYMin);
+    // var x = finger[i].tipPosition[0];
+    // var y = window.innerHeight-finger[i].tipPosition[1];
+    // var z = finger[i].tipPosition[2];
+    // if(x<rawXMin){
+    //   rawXMin = x;
+    // }
+    // if(x>rawXMax){
+    //   rawXMax = x;
+    // }
+    // if(y<rawYMin){
+    //   rawYMin = y;
+    // }
+    // if(y>rawYMax){
+    //   rawYMax = y;
+    // }
+    //console.log(rawXMax, rawXMin, rawYMax, rawYMin);
 
-    var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
+
+    // var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
 
     //I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
     // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
     // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
 
-    var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
+    //var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
 
     //circle(newX, newY, 100);
 
