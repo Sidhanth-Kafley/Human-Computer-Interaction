@@ -51,7 +51,7 @@ function HandleFinger(finger){
 
     var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
 
-    circle(newX, newY, 100);
+    //circle(newX, newY, 100);
 
   }
 }
