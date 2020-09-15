@@ -58,9 +58,9 @@ function HandleBone(bone, weight){
 
     if(bone[j].type === 0){
       weight = 10;
-      r = 192;
-      g = 192;
-      b = 192;
+      r = 210;
+      g = 210;
+      b = 210;
 
     }
     else if(bone[j].type === 1){
