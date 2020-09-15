@@ -54,20 +54,38 @@ function HandleBone(bone, weight){
     var newBaseX = newBase[0];
     var newBaseY = newBase[1];
 
+    var r,g,b = 0;
+
     if(bone[j].type === 0){
       weight = 10;
+      r = 192;
+      g = 192;
+      b = 192;
+
     }
     else if(bone[j].type === 1){
       weight = 7;
+      r = 169;
+      g = 169;
+      b = 169;
+
     }
     else if(bone[j].type === 2){
       weight = 5;
+      r = 128;
+      g = 128;
+      b = 128;
+
     }
     else if(bone[j].type === 3){
       weight = 2;
+      r = 105;
+      g = 105;
+      b = 105;
     }
 
     strokeWeight(weight);
+    stroke(r,g,b);
     line(newTipX, newTipY, newBaseX, newBaseY);
 
   }
