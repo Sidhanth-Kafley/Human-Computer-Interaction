@@ -1,3 +1,5 @@
+var oneFrameOfData = nj.zeros([5]);
+
 var controllerOptions = {};
 
 var rawXMin = 2000;
