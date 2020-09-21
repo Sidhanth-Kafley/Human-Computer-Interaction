@@ -35,7 +35,8 @@ function HandleHand(hand, frame){
     for(var i=0; i<finger.length; i++){
     var bone = finger[i].bones;
     var weight=1;
-    HandleBone(j, bone, weight, frame);
+    var fingerIndex = finger[i].type;
+    HandleBone(j, bone, weight, frame, fingerIndex);
     }
   }
 }
@@ -51,7 +52,7 @@ function HandleHand(hand, frame){
 //   }
 // }
 
-function HandleBone(j, bone, weight, frame){
+function HandleBone(j, bone, weight, frame, fingerIndex){
     //console.log(bone[j]);
     var x = bone[j].nextJoint[0];
     var y = window.innerHeight-bone[j].nextJoint[1];
