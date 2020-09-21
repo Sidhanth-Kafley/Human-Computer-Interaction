@@ -4,11 +4,21 @@ var rawXMin = 2000;
 var rawXMax = 10;
 var rawYMin = 2000;
 var rawYMax = 10;
+var previousNumHands = 0;
+var currentNumHands = 0;
 
 Leap.loop(controllerOptions, function(frame)
 {
-  clear();
-  HandleFrame(frame);
+  //Leap::Hand currentNumHands = frame.hand(handID);
+  //currentNumHands = frame.hand(previousNumHands);
+  for(var h = 0; h < frame.hands.length; h++){
+    var currentNumHands = frame.hands[h];
+  }
+  // clear();
+  // HandleFrame(frame);
+  console.log(previousNumHands);
+  console.log(currentNumHands);
+  previousNumHands = currentNumHands;
 }
 );
 
