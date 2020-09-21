@@ -9,14 +9,14 @@ var currentNumHands = 0;
 
 Leap.loop(controllerOptions, function(frame)
   {
-    for(var h = 0; h < frame.hands.length; h++){
-      var currentNumHands = frame.hands[h];
-    }
+    var currentNumHands = frame.hands.length;
     clear();
     HandleFrame(frame);
-    //console.log(previousNumHands);
-    //console.log(currentNumHands);
+    if(previousNumHands === 2 && currentNumHands === 1){
+      RecordData();
+    }
     previousNumHands = currentNumHands;
+
   }
 );
 
@@ -129,8 +129,6 @@ function HandleBone(j, bone, weight, frame){
       }
     }
 
-
-
     strokeWeight(weight);
     stroke(r,g,b);
     line(newTipX, newTipY, newBaseX, newBaseY);
@@ -159,4 +157,8 @@ function TransformCoordinates(x, y){
   var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
 
   return [newX, newY];
+}
+
+function RecordData(){
+  background(0,0,0);
 }
