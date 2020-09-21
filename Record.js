@@ -21,19 +21,19 @@ Leap.loop(controllerOptions, function(frame)
 );
 
 function HandleFrame(frame){
-  if(frame.hands.length === 1){
+  if(frame.hands.length === 1 || frame.hands.length === 2){
     var hand = frame.hands[0];
-    HandleHand(hand);
+    HandleHand(hand, frame);
   }
 }
 
-function HandleHand(hand){
+function HandleHand(hand, frame){
   var finger = hand.fingers;
   for(var j=3; j>=0; j--){
     for(var i=0; i<finger.length; i++){
     var bone = finger[i].bones;
     var weight=1;
-    HandleBone(j, bone, weight);
+    HandleBone(j, bone, weight, frame);
     }
   }
 }
@@ -49,7 +49,7 @@ function HandleHand(hand){
 //   }
 // }
 
-function HandleBone(j, bone, weight){
+function HandleBone(j, bone, weight, frame){
     //console.log(bone[j]);
     var x = bone[j].nextJoint[0];
     var y = window.innerHeight-bone[j].nextJoint[1];
@@ -69,33 +69,67 @@ function HandleBone(j, bone, weight){
 
     var r,g,b = 0;
 
-    if(bone[j].type === 0){
-      weight = 10;
-      r = 124;
-      g = 252;
-      b = 0;
+    if(frame.hands.length === 1){
+      if(bone[j].type === 0){
+        weight = 10;
+        r = 124;
+        g = 252;
+        b = 0;
 
-    }
-    else if(bone[j].type === 1){
-      weight = 7;
-      r = 50;
-      g = 205;
-      b = 50;
+      }
+      else if(bone[j].type === 1){
+        weight = 7;
+        r = 50;
+        g = 205;
+        b = 50;
 
-    }
-    else if(bone[j].type === 2){
-      weight = 5;
-      r = 34;
-      g = 139;
-      b = 34;
+      }
+      else if(bone[j].type === 2){
+        weight = 5;
+        r = 34;
+        g = 139;
+        b = 34;
 
+      }
+      else if(bone[j].type === 3){
+        weight = 2;
+        r = 0;
+        g = 100;
+        b = 0;
+      }
     }
-    else if(bone[j].type === 3){
-      weight = 2;
-      r = 0;
-      g = 100;
-      b = 0;
+
+    else if(frame.hands.length === 2){
+      if(bone[j].type === 0){
+        weight = 10;
+        r = 255;
+        g = 8;
+        b = 0;
+
+      }
+      else if(bone[j].type === 1){
+        weight = 7;
+        r = 184;
+        g = 15;
+        b = 10;
+
+      }
+      else if(bone[j].type === 2){
+        weight = 5;
+        r = 128;
+        g = 0;
+        b = 0;
+
+      }
+      else if(bone[j].type === 3){
+        weight = 2;
+        r = 66;
+        g = 13;
+        b = 9;
+      }
     }
+
+
 
     strokeWeight(weight);
     stroke(r,g,b);
