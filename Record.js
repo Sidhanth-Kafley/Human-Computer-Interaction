@@ -9,15 +9,13 @@ var currentNumHands = 0;
 
 Leap.loop(controllerOptions, function(frame)
   {
-    //Leap::Hand currentNumHands = frame.hand(handID);
-    //currentNumHands = frame.hand(previousNumHands);
     for(var h = 0; h < frame.hands.length; h++){
       var currentNumHands = frame.hands[h];
     }
-    // clear();
-    // HandleFrame(frame);
-    console.log(previousNumHands);
-    console.log(currentNumHands);
+    clear();
+    HandleFrame(frame);
+    //console.log(previousNumHands);
+    //console.log(currentNumHands);
     previousNumHands = currentNumHands;
   }
 );
