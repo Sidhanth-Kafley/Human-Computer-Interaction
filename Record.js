@@ -11,7 +11,6 @@ var currentNumHands = 0;
 
 Leap.loop(controllerOptions, function(frame)
   {
-    console.log(oneFrameOfData.toString());
     var currentNumHands = frame.hands.length;
     clear();
     HandleFrame(frame);
@@ -165,4 +164,5 @@ function TransformCoordinates(x, y){
 
 function RecordData(){
   background(0,0,0);
+  console.log(oneFrameOfData.toString());
 }
