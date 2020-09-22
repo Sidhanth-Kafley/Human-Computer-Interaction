@@ -1,4 +1,4 @@
-var oneFrameOfData = nj.zeros([5]);
+var oneFrameOfData = nj.zeros([5,4]);
 
 var controllerOptions = {};
 
@@ -55,7 +55,9 @@ function HandleBone(j, bone, weight, frame, fingerIndex){
     var y1 = window.innerHeight-bone[j].prevJoint[1];
     var z1 = bone[j].prevJoint[2];
     var sum = x+y+z+x1+y1+z1;
-    oneFrameOfData.set(fingerIndex, sum);
+    var boneIndex = bone[j].type;
+
+    oneFrameOfData.set(fingerIndex,boneIndex,sum);
 
     var newBase = TransformCoordinates(x1, y1);
     var newBaseX = newBase[0];
