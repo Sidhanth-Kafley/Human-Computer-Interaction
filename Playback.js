@@ -41,7 +41,7 @@ anotherFrameOfData = nj.array([[[   1181.439,  268.93159,    59.6377,   1181.439
         [ 1261.81844,   39.11752,   -39.5649, 1237.52222,   30.12381,   -54.1363]]])
 
 var frameIndex = 0;
-
+var counter = 0;
 function draw(){
   if(frameIndex < 100){
     frameIndex++;
@@ -49,7 +49,6 @@ function draw(){
   else{
     frameIndex = 0;
   }
-  var counter = 0;
   if (frameIndex === 0){
     if(counter === 0){
       counter = 1;
@@ -76,7 +75,7 @@ function draw(){
       var x1End = anotherFrameOfData.get(fingerIndex, boneIndex, 3);
       var y1End = anotherFrameOfData.get(fingerIndex, boneIndex, 4);
       var z1End = anotherFrameOfData.get(fingerIndex, boneIndex, 5);
-      if(frameIndex%2 ===0){
+      if(counter%2 ===0){
         line(x1Start, y1Start, x1End, y1End);
       }
       else{
