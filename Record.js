@@ -12,13 +12,13 @@ var currentNumHands = 0;
 Leap.loop(controllerOptions, function(frame)
   {
     console.log(oneFrameOfData.toString());
-    // var currentNumHands = frame.hands.length;
-    // clear();
-    // HandleFrame(frame);
-    // if(previousNumHands === 2 && currentNumHands === 1){
-    //   RecordData();
-    // }
-    // previousNumHands = currentNumHands;
+    var currentNumHands = frame.hands.length;
+    clear();
+    HandleFrame(frame);
+    if(previousNumHands === 2 && currentNumHands === 1){
+      RecordData();
+    }
+    previousNumHands = currentNumHands;
   }
 );
 
@@ -41,17 +41,6 @@ function HandleHand(hand, frame){
   }
 }
 
-// function HandleFinger(finger){
-//   for(var i=0; i<finger.length; i++){
-//     var bone = finger[i].bones;
-//     var weight=1;
-//     HandleBone(bone[j], weight);
-//     // var x = finger[i].tipPosition[0];
-//     // var y = window.innerHeight-finger[i].tipPosition[1];
-//     // var z = finger[i].tipPosition[2];
-//   }
-// }
-
 function HandleBone(j, bone, weight, frame, fingerIndex){
     //console.log(bone[j]);
     var x = bone[j].nextJoint[0];
@@ -65,6 +54,8 @@ function HandleBone(j, bone, weight, frame, fingerIndex){
     var x1 = bone[j].prevJoint[0];
     var y1 = window.innerHeight-bone[j].prevJoint[1];
     var z1 = bone[j].prevJoint[2];
+    var sum = x+y+z+x1+y1+z1;
+    oneFrameOfData.set(fingerIndex, sum);
 
     var newBase = TransformCoordinates(x1, y1);
     var newBaseX = newBase[0];
