@@ -1,4 +1,4 @@
-var oneFrameOfData = nj.zeros([5,4]);
+var oneFrameOfData = nj.zeros([5,4,6]);
 
 var controllerOptions = {};
 
