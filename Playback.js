@@ -40,9 +40,12 @@ anotherFrameOfData = nj.array([[[   1181.439,  268.93159,    59.6377,   1181.439
         [ 1288.36355,   51.27217,   -23.0102, 1261.81844,   39.11752,   -39.5649],
         [ 1261.81844,   39.11752,   -39.5649, 1237.52222,   30.12381,   -54.1363]]])
 
+var frameIndex = 0;
+
 function draw(){
   clear();
   for(var fingerIndex=0; fingerIndex<5; fingerIndex++){
+    frameIndex++;
     for(var boneIndex=0;boneIndex<4;boneIndex++){
       //console.log(oneFrameOfData.toString());
       var xStart = oneFrameOfData.get(fingerIndex, boneIndex, 0);
@@ -58,9 +61,12 @@ function draw(){
       var x1End = anotherFrameOfData.get(fingerIndex, boneIndex, 3);
       var y1End = anotherFrameOfData.get(fingerIndex, boneIndex, 4);
       var z1End = anotherFrameOfData.get(fingerIndex, boneIndex, 5);
-
-      line(xStart, yStart, xEnd, yEnd);
-      line(x1Start, y1Start, x1End, y1End);
+      if(frameIndex%2 ===0){
+        line(x1Start, y1Start, x1End, y1End);
+      }
+      else{
+        line(xStart, yStart, xEnd, yEnd);
+      }
     }
   }
 }
