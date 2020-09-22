@@ -57,7 +57,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex){
     var sum = x+y+z+x1+y1+z1;
     var boneIndex = bone[j].type;
 
-    oneFrameOfData.set(fingerIndex,boneIndex,sum);
+    oneFrameOfData.set(fingerIndex,boneIndex,x1);
+    oneFrameOfData.set(fingerIndex,boneIndex,y1);
+    oneFrameOfData.set(fingerIndex,boneIndex,z1);
+    oneFrameOfData.set(fingerIndex,boneIndex,x);
+    oneFrameOfData.set(fingerIndex,boneIndex,y);
+    oneFrameOfData.set(fingerIndex,boneIndex,z);
 
     var newBase = TransformCoordinates(x1, y1);
     var newBaseX = newBase[0];
