@@ -51,7 +51,16 @@ function draw(){
       var xEnd = oneFrameOfData.get(fingerIndex, boneIndex, 3);
       var yEnd = oneFrameOfData.get(fingerIndex, boneIndex, 4);
       var zEnd = oneFrameOfData.get(fingerIndex, boneIndex, 5);
+
+      var x1Start = anotherFrameOfData.get(fingerIndex, boneIndex, 0);
+      var y1Start = anotherFrameOfData.get(fingerIndex, boneIndex, 1);
+      var z1Start = anotherFrameOfData.get(fingerIndex, boneIndex, 2);
+      var x1End = anotherFrameOfData.get(fingerIndex, boneIndex, 3);
+      var y1End = anotherFrameOfData.get(fingerIndex, boneIndex, 4);
+      var z1End = anotherFrameOfData.get(fingerIndex, boneIndex, 5);
+
       line(xStart, yStart, xEnd, yEnd);
+      line(x1Start, y1Start, x1End, y1End);
     }
   }
 }
