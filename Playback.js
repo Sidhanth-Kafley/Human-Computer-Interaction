@@ -30,12 +30,7 @@ function draw(){
       var xEnd = oneFrameOfData.get(fingerIndex, boneIndex, 3);
       var yEnd = oneFrameOfData.get(fingerIndex, boneIndex, 4);
       var zEnd = oneFrameOfData.get(fingerIndex, boneIndex, 5);
-      console.log(xStart);
-      console.log(yStart);
-      console.log(zStart);
-      console.log(xEnd);
-      console.log(yEnd);
-      console.log(zEnd);
+      line(xStart, yStart, xEnd, yEnd);
     }
   }
 }
