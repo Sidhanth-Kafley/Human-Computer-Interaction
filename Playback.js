@@ -43,9 +43,24 @@ anotherFrameOfData = nj.array([[[   1181.439,  268.93159,    59.6377,   1181.439
 var frameIndex = 0;
 
 function draw(){
+  if(frameIndex < 100){
+    frameIndex++;
+  }
+  else{
+    frameIndex = 0;
+  }
+  var counter = 0;
+  if (frameIndex === 0){
+    if(counter === 0){
+      counter = 1;
+    }
+    else if(counter === 1){
+      counter = 0;
+    }
+  }
+  console.log(counter);
   clear();
   for(var fingerIndex=0; fingerIndex<5; fingerIndex++){
-    frameIndex++;
     for(var boneIndex=0;boneIndex<4;boneIndex++){
       //console.log(oneFrameOfData.toString());
       var xStart = oneFrameOfData.get(fingerIndex, boneIndex, 0);
