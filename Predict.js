@@ -167,7 +167,7 @@ function draw(){
 function Train(numSamples){
   for(var i=0; i<150; i++){
     if(i%2 == 0){
-      var currentFeatures = irisData.pick(i).slice([0,4]).tolist();
+      var currentFeatures = irisData.pick(i).slice([0,2]).tolist();
       var currentLabel = irisData.pick(i).get(4);
       console.log(i+1);
       console.log(irisData.pick(i).toString());
@@ -180,7 +180,7 @@ function Train(numSamples){
 
 function Test(){
     if(testingSampleIndex%2 !== 0){
-      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,4]).tolist();
+      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,2]).tolist();
       var currentLabel = irisData.pick(testingSampleIndex).get(4);
       // console.log(i+1);
       // console.log(irisData.pick(i).toString());
