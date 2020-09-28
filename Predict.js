@@ -191,8 +191,12 @@ function Test(){
         //console.log(parseInt(result.labe));
         console.log(currentLabel);
         console.log(currentFeatures);
+        testingSampleIndex+=2;
+        if(testingSampleIndex>numSamples){
+          testingSampleIndex = 1;
+        }
       }
       //console.log(predictedLabel);
     }
-  
+
 }
