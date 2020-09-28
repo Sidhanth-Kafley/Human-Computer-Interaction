@@ -161,7 +161,7 @@ function draw(){
     Train(numSamples);
     trainingCompleted = true;
   }
-  //Test();
+  Test();
 }
 
 function Train(numSamples){
@@ -179,5 +179,14 @@ function Train(numSamples){
 }
 
 function Test(){
-  console.log("I'm being tested.")
+  for(var i=0; i<150; i++){
+    if(i%2 !== 0){
+      var currentFeatures = irisData.pick(i).slice([0,4]).tolist();
+      var currentLabel = irisData.pick(i).get(4);
+      console.log(i+1);
+      console.log(irisData.pick(i).toString());
+      console.log(currentFeatures);
+      console.log(currentLabel);
+    }
+  }
 }
