@@ -1,5 +1,5 @@
 const knnClassifier = ml5.KNNClassifier();
-
+var testingSampleIndex = 1;
 var irisData=nj.array([[	5.1	,	3.5	,	1.4	,	0.2	,	0	],
 [	4.9	,	3	,	1.4	,	0.2	,	0	],
 [	4.7	,	3.2	,	1.3	,	0.2	,	0	],
@@ -179,7 +179,6 @@ function Train(numSamples){
 }
 
 function Test(){
-  for(var i=0; i<150; i++){
     if(i%2 !== 0){
       var currentFeatures = irisData.pick(i).slice([0,4]).tolist();
       var currentLabel = irisData.pick(i).get(4);
