@@ -4,6 +4,7 @@ function draw(){
   clear();
   if(trainingCompleted === false){
     Train();
+    trainingCompleted = true;
   }
   Test();
 }
