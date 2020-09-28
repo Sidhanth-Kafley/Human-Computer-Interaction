@@ -163,9 +163,10 @@ function draw(){
 }
 
 function Train(numSamples){
-  for(var i=0; i<=150; i++){
+  for(var i=0; i<150; i++){
     if(i%2 == 0){
-      console.log(i);
+      console.log(i+1);
+      console.log(irisData.pick(i).toString());
     }
   }
 }
