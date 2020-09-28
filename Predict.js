@@ -203,6 +203,8 @@ function Test(){
 
 function DrawCircles(){
   for (var j=0; j<numSamples; j++){
-    console.log(j);
+    var x = irisData.pick(j).get(0);
+    var y = irisData.pick(j).get(1);
+    console.log(x, y);
   }
 }
