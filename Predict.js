@@ -1,3 +1,5 @@
+var predictedClassLabels = nj.zeros([numSamples, numFeatures]);
+
 const knnClassifier = ml5.KNNClassifier();
 var testingSampleIndex = 1;
 var irisData=nj.array([[	5.1	,	3.5	,	1.4	,	0.2	,	0	],
@@ -196,6 +198,7 @@ function Test(){
         if(testingSampleIndex>numSamples){
           testingSampleIndex = 1;
         }
+        predictedClassLabels[testingSampleIndex] = parseInt(result.label);
       }
       //console.log(predictedLabel);
     }
