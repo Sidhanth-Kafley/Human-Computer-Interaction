@@ -155,14 +155,11 @@ var numFeatures = irisData.shape[1] - 1;
 
 function draw(){
   clear();
-  console.log(irisData.toString());
   if(trainingCompleted === false){
     Train();
     trainingCompleted = true;
   }
-  Test();
-  console.log(numSamples);
-  console.log(numFeatures);
+  //Test();
 }
 
 function Train(){
