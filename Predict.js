@@ -166,7 +166,7 @@ function Train(numSamples){
   for(var i=0; i<150; i++){
     if(i%2 == 0){
       console.log(i+1);
-      console.log(irisData.pick(i).toString());
+      console.log(irisData.pick(i).slice([0,4]).toString());
     }
   }
 }
