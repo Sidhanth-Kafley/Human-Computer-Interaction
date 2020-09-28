@@ -206,6 +206,6 @@ function DrawCircles(){
     var x = irisData.pick(j).get(0);
     var y = irisData.pick(j).get(1);
     //console.log(x, y);
-    circle(x, y, 50);
+    circle(x*100, y*100, 50);
   }
 }
