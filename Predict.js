@@ -205,7 +205,25 @@ function DrawCircles(){
   for (var j=0; j<numSamples; j++){
     var x = irisData.pick(j).get(0);
     var y = irisData.pick(j).get(1);
+    c = irisData.pick(j).get(4);
     //console.log(x, y);
+    var r,g,b;
+    if(c === 0){
+      r = 255;
+      g = 0;
+      b = 0;
+    }
+    else if(c === 1){
+      r = 0;
+      g = 0;
+      b = 255;
+    }
+    else if(c === 2){
+      r = 0;
+      g = 255;
+      b = 0;
+    }
+    fill(r, g, b);
     circle(x*100, y*100, 8);
   }
 }
