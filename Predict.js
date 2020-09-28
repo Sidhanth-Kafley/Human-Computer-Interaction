@@ -187,6 +187,8 @@ function Test(){
       console.log(irisData.pick(i).toString());
       console.log(currentFeatures);
       console.log(currentLabel);
+      var predictedLabel = knnClassifier.classify(currentFeatures);
+      console.log(predictedLabel);
     }
   }
 }
