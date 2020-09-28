@@ -1,3 +1,5 @@
+var trainingCompleted = false;
+
 function draw(){
   clear();
   Train();
