@@ -1,4 +1,4 @@
-var predictedClassLabels = nj.zeros([numSamples, numFeatures]);
+var predictedClassLabels = nj.zeros([150]);
 
 const knnClassifier = ml5.KNNClassifier();
 var testingSampleIndex = 1;
@@ -183,7 +183,7 @@ function Train(){
 
 function Test(){
     if(testingSampleIndex%2 !== 0){
-      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,4]).tolist();
+      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,2]).tolist();
       var currentLabel = irisData.pick(testingSampleIndex).get(4);
       // console.log(i+1);
       // console.log(irisData.pick(i).toString());
@@ -198,7 +198,7 @@ function Test(){
         if(testingSampleIndex>numSamples){
           testingSampleIndex = 1;
         }
-        predictedClassLabels[testingSampleIndex] = parseInt(result.label);
+        predictedClassLabels = parseInt(result.label);
       }
       //console.log(predictedLabel);
     }
@@ -233,6 +233,7 @@ function DrawCircles(){
     else{
       stroke(r, g, b);
     }
-    circle(x*100, y*100, 8);
+    //circle(x*100, y*100, 8);
+    console.log(predictedClassLabels);
   }
 }
