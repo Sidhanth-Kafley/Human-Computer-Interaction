@@ -150,6 +150,7 @@ var irisData=nj.array([[	5.1	,	3.5	,	1.4	,	0.2	,	0	],
 [	5.9	,	3	,	5.1	,	1.8	,	2	]]);
 
 var trainingCompleted = false;
+var numSamples = irisData.shape[0];
 
 function draw(){
   clear();
@@ -159,6 +160,7 @@ function draw(){
     trainingCompleted = true;
   }
   Test();
+  console.log(numSamples);
 }
 
 function Train(){
