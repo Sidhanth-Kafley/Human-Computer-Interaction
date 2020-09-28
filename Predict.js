@@ -181,7 +181,7 @@ function Train(){
 
 function Test(){
     if(testingSampleIndex%2 !== 0){
-      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,2]).tolist();
+      var currentFeatures = irisData.pick(testingSampleIndex).slice([0,4]).tolist();
       var currentLabel = irisData.pick(testingSampleIndex).get(4);
       // console.log(i+1);
       // console.log(irisData.pick(i).toString());
@@ -224,6 +224,12 @@ function DrawCircles(){
       b = 0;
     }
     fill(r, g, b);
+    if(j % 2==0){
+      stroke(0, 0, 0);
+    }
+    else{
+      stroke(r, g, b);
+    }
     circle(x*100, y*100, 8);
   }
 }
