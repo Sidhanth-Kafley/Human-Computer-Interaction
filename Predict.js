@@ -1,5 +1,7 @@
 function draw(){
   clear();
+  Train();
+  Test();
 }
 
 function Train(){
