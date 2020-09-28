@@ -2,7 +2,9 @@ var trainingCompleted = false;
 
 function draw(){
   clear();
-  Train();
+  if(trainingCompleted === false){
+    Train();
+  }
   Test();
 }
 
