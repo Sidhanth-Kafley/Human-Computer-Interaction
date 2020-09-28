@@ -149,12 +149,11 @@ var irisData=nj.array([[	5.1	,	3.5	,	1.4	,	0.2	,	0	],
 [	6.2	,	3.4	,	5.4	,	2.3	,	2	],
 [	5.9	,	3	,	5.1	,	1.8	,	2	]]);
 
-
-
 var trainingCompleted = false;
 
 function draw(){
   clear();
+  console.log(irisData.toString());
   if(trainingCompleted === false){
     Train();
     trainingCompleted = true;
