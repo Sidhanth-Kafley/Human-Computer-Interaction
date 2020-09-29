@@ -203,7 +203,7 @@ function GotResults(err, result){
   if(testingSampleIndex>numSamples){
     testingSampleIndex = 1;
   }
-  predictedClassLabels = parseInt(result.label);
+  predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
 }
 
 function DrawCircles(){
@@ -233,17 +233,17 @@ function DrawCircles(){
       stroke(0, 0, 0);
     }
     else{
-      if(predictedClassLabels === 0){
+      if(predictedClassLabels.get(j) === 0){
         r = 255;
         g = 0;
         b = 0;
       }
-      else if(predictedClassLabels === 1){
+      else if(predictedClassLabels.get(j) === 1){
         r = 0;
         g = 0;
         b = 255;
       }
-      else if(predictedClassLabels === 2){
+      else if(predictedClassLabels.get(j) === 2){
         r = 0;
         g = 255;
         b = 0;
@@ -251,6 +251,6 @@ function DrawCircles(){
       stroke(r, g, b);
     }
     circle(x*100, y*100, 8);
-    //console.log(predictedClassLabels);
+    console.log(predictedClassLabels.get(j));
   }
 }
