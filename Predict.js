@@ -160,7 +160,7 @@ var numFeatures = irisData.shape[1] - 1;
 function draw(){
   clear();
   if(trainingCompleted === false){
-    Train(numSamples);
+    Train();
     trainingCompleted = true;
   }
   Test();
@@ -201,6 +201,7 @@ function Test(){
         predictedClassLabels = parseInt(result.label);
       }
       //console.log(predictedLabel);
+      //predictedClassLabels = parseInt(predictedLabel);
     }
 }
 
@@ -231,9 +232,24 @@ function DrawCircles(){
       stroke(0, 0, 0);
     }
     else{
+      if(predictedClassLabels === 0){
+        r = 255;
+        g = 0;
+        b = 0;
+      }
+      else if(predictedClassLabels === 1){
+        r = 0;
+        g = 0;
+        b = 255;
+      }
+      else if(predictedClassLabels === 2){
+        r = 0;
+        g = 255;
+        b = 0;
+      }
       stroke(r, g, b);
     }
-    //circle(x*100, y*100, 8);
+    circle(x*100, y*100, 8);
     console.log(predictedClassLabels);
   }
 }
