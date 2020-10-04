@@ -24,23 +24,23 @@ Leap.loop(controllerOptions, function(frame)
 function HandleFrame(frame){
   if(frame.hands.length === 1 || frame.hands.length === 2){
     var hand = frame.hands[0];
-    HandleHand(hand, frame);
+    HandleHand(hand, frame, InteractionBox);
   }
 }
 
-function HandleHand(hand, frame){
+function HandleHand(hand, frame, InteractionBox){
   var finger = hand.fingers;
   for(var j=3; j>=0; j--){
     for(var i=0; i<finger.length; i++){
     var bone = finger[i].bones;
     var weight=1;
     var fingerIndex = finger[i].type;
-    HandleBone(j, bone, weight, frame, fingerIndex);
+    HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox);
     }
   }
 }
 
-function HandleBone(j, bone, weight, frame, fingerIndex){
+function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox)){
     //console.log(bone[j]);
     var x = bone[j].nextJoint[0];
     var y = window.innerHeight-bone[j].nextJoint[1];
