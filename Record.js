@@ -1,7 +1,6 @@
 var oneFrameOfData = nj.zeros([5,4,6]);
 
 var controllerOptions = {};
-
 var rawXMin = 2000;
 var rawXMax = 10;
 var rawYMin = 2000;
@@ -24,6 +23,7 @@ Leap.loop(controllerOptions, function(frame)
 function HandleFrame(frame){
   if(frame.hands.length === 1 || frame.hands.length === 2){
     var hand = frame.hands[0];
+    var InteractionBox = frame.interactionBox;
     HandleHand(hand, frame, InteractionBox);
   }
 }
@@ -40,8 +40,12 @@ function HandleHand(hand, frame, InteractionBox){
   }
 }
 
-function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox)){
+function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     //console.log(bone[j]);
+
+    var normalizePrevJoint = InteractionBox.normalizePoint(bone[j].prevJoint, true);
+    console.log(normalizePrevJoint);
+
     var x = bone[j].nextJoint[0];
     var y = window.innerHeight-bone[j].nextJoint[1];
     var z = bone[j].nextJoint[2];
