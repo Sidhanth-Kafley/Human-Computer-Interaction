@@ -44,7 +44,9 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     //console.log(bone[j]);
 
     var normalizePrevJoint = InteractionBox.normalizePoint(bone[j].prevJoint, true);
-    console.log(normalizePrevJoint);
+    //console.log(normalizePrevJoint);
+    var normalizedNextJoint = InteractionBox.normalizePoint(bone[j].nextJoint, true);
+    console.log(normalizedNextJoint);
 
     var x = bone[j].nextJoint[0];
     var y = window.innerHeight-bone[j].nextJoint[1];
