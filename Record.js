@@ -178,5 +178,5 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
 function RecordData(){
   background(0,0,0);
   //console.log(framesOfData.toString());
-  console.log( framesOfData.pick(null,null,null,0).toString());
+  console.log( framesOfData.pick(null,null,null,1).toString());
 }
