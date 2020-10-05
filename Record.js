@@ -1,5 +1,5 @@
 var oneFrameOfData = nj.zeros([5,4,6]);
-
+var numSamples = 2;
 var controllerOptions = {};
 var rawXMin = 2000;
 var rawXMax = 10;
