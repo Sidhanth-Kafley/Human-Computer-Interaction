@@ -1,5 +1,6 @@
-var framesOfData = 2;
-var oneFrameOfData = nj.zeros([5,4,6,framesOfData]);
+var numSamples = 2;
+var currrentSamples = 0;
+var framesOfData = nj.zeros([5,4,6,numSamples]);
 var controllerOptions = {};
 var rawXMin = 2000;
 var rawXMax = 10;
@@ -74,12 +75,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     // var newBaseY = newBase[1];
 
 
-    oneFrameOfData.set(fingerIndex,boneIndex,0,canvasX1);
-    oneFrameOfData.set(fingerIndex,boneIndex,1,canvasY1);
-    oneFrameOfData.set(fingerIndex,boneIndex,2,z1);
-    oneFrameOfData.set(fingerIndex,boneIndex,3,canvasX);
-    oneFrameOfData.set(fingerIndex,boneIndex,4,canvasY);
-    oneFrameOfData.set(fingerIndex,boneIndex,5,z);
+    framesOfData.set(fingerIndex,boneIndex,0,currrentSamples,canvasX1);
+    framesOfData.set(fingerIndex,boneIndex,1,currrentSamples,canvasY1);
+    framesOfData.set(fingerIndex,boneIndex,2,currrentSamples,z1);
+    framesOfData.set(fingerIndex,boneIndex,3,currrentSamples,canvasX);
+    framesOfData.set(fingerIndex,boneIndex,4,currrentSamples,canvasY);
+    framesOfData.set(fingerIndex,boneIndex,5,currrentSamples,z);
 
 
     var r,g,b = 0;
@@ -176,5 +177,5 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
 
 function RecordData(){
   background(0,0,0);
-  console.log(oneFrameOfData.toString());
+  console.log(framesOfData.toString());
 }
