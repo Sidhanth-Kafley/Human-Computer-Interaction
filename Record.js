@@ -46,33 +46,39 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     var normalizePrevJoint = InteractionBox.normalizePoint(bone[j].prevJoint, true);
     //console.log(normalizePrevJoint);
     var normalizedNextJoint = InteractionBox.normalizePoint(bone[j].nextJoint, true);
-    console.log(normalizedNextJoint);
+    //console.log(normalizedNextJoint);
 
-    var x = bone[j].nextJoint[0];
-    var y = window.innerHeight-bone[j].nextJoint[1];
+    var canvasX = window.innerWidth * normalizedNextJoint[0];
+    var canvasY = window.innerHeight * (1 - normalizedNextJoint[1]);
+
+    var canvasX1 = window.innerWidth * normalizePrevJoint[0];
+    var canvasY1 = window.innerHeight * (1 - normalizePrevJoint[1]);
+
+    // var x = bone[j].nextJoint[0];
+    // var y = window.innerHeight-bone[j].nextJoint[1];
     var z = bone[j].nextJoint[2];
 
-    var newTip = TransformCoordinates(x, y);
-    var newTipX = newTip[0];
-    var newTipY = newTip[1];
+    // var newTip = TransformCoordinates(x, y);
+    // var newTipX = newTip[0];
+    // var newTipY = newTip[1];
 
-    var x1 = bone[j].prevJoint[0];
-    var y1 = window.innerHeight-bone[j].prevJoint[1];
+    // var x1 = bone[j].prevJoint[0];
+    // var y1 = window.innerHeight-bone[j].prevJoint[1];
     var z1 = bone[j].prevJoint[2];
-    var sum = x+y+z+x1+y1+z1;
+    // var sum = x+y+z+x1+y1+z1;
 
     var boneIndex = bone[j].type;
 
-    var newBase = TransformCoordinates(x1, y1);
-    var newBaseX = newBase[0];
-    var newBaseY = newBase[1];
+    // var newBase = TransformCoordinates(x1, y1);
+    // var newBaseX = newBase[0];
+    // var newBaseY = newBase[1];
 
 
-    oneFrameOfData.set(fingerIndex,boneIndex,0,newBaseX);
-    oneFrameOfData.set(fingerIndex,boneIndex,1,newBaseY);
+    oneFrameOfData.set(fingerIndex,boneIndex,0,canvasX1);
+    oneFrameOfData.set(fingerIndex,boneIndex,1,canvasY1);
     oneFrameOfData.set(fingerIndex,boneIndex,2,z1);
-    oneFrameOfData.set(fingerIndex,boneIndex,3,newTipX);
-    oneFrameOfData.set(fingerIndex,boneIndex,4,newTipY);
+    oneFrameOfData.set(fingerIndex,boneIndex,3,canvasX);
+    oneFrameOfData.set(fingerIndex,boneIndex,4,canvasY);
     oneFrameOfData.set(fingerIndex,boneIndex,5,z);
 
 
@@ -140,33 +146,33 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
 
     strokeWeight(weight);
     stroke(r,g,b);
-    line(newTipX, newTipY, newBaseX, newBaseY);
+    line(canvasX, canvasY, canvasX1, canvasY1);
 }
 
-function TransformCoordinates(x, y){
-  if(x<rawXMin){
-    rawXMin = x;
-  }
-  if(x>rawXMax){
-    rawXMax = x;
-  }
-  if(y<rawYMin){
-    rawYMin = y;
-  }
-  if(y>rawYMax){
-    rawYMax = y;
-  }
-
-  var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
-
-  // I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
-  // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
-  // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
-
-  var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
-
-  return [newX, newY];
-}
+// function TransformCoordinates(x, y){
+//   if(x<rawXMin){
+//     rawXMin = x;
+//   }
+//   if(x>rawXMax){
+//     rawXMax = x;
+//   }
+//   if(y<rawYMin){
+//     rawYMin = y;
+//   }
+//   if(y>rawYMax){
+//     rawYMax = y;
+//   }
+//
+//   var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
+//
+//   // I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
+//   // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+//   // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
+//
+//   var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
+//
+//   return [newX, newY];
+// }
 
 function RecordData(){
   background(0,0,0);
