@@ -1,5 +1,5 @@
 var numSamples = 2;
-var currrentSamples = 0;
+var currrentSample = 0;
 var framesOfData = nj.zeros([5,4,6,numSamples]);
 var controllerOptions = {};
 var rawXMin = 2000;
@@ -15,7 +15,7 @@ Leap.loop(controllerOptions, function(frame)
     clear();
     HandleFrame(frame);
     if(previousNumHands === 2 && currentNumHands === 1){
-      RecordData();
+      RecordData(previousNumHands);
     }
     previousNumHands = currentNumHands;
   }
@@ -75,12 +75,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     // var newBaseY = newBase[1];
 
 
-    framesOfData.set(fingerIndex,boneIndex,0,currrentSamples,canvasX1);
-    framesOfData.set(fingerIndex,boneIndex,1,currrentSamples,canvasY1);
-    framesOfData.set(fingerIndex,boneIndex,2,currrentSamples,z1);
-    framesOfData.set(fingerIndex,boneIndex,3,currrentSamples,canvasX);
-    framesOfData.set(fingerIndex,boneIndex,4,currrentSamples,canvasY);
-    framesOfData.set(fingerIndex,boneIndex,5,currrentSamples,z);
+    framesOfData.set(fingerIndex,boneIndex,0,currrentSample,canvasX1);
+    framesOfData.set(fingerIndex,boneIndex,1,currrentSample,canvasY1);
+    framesOfData.set(fingerIndex,boneIndex,2,currrentSample,z1);
+    framesOfData.set(fingerIndex,boneIndex,3,currrentSample,canvasX);
+    framesOfData.set(fingerIndex,boneIndex,4,currrentSample,canvasY);
+    framesOfData.set(fingerIndex,boneIndex,5,currrentSample,z);
 
 
     var r,g,b = 0;
@@ -143,10 +143,6 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
         g = 13;
         b = 9;
       }
-      currrentSamples++;
-      if(currrentSamples === numSamples){
-        currrentSamples = 0;
-      }
     }
 
     strokeWeight(weight);
@@ -179,8 +175,15 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
 //   return [newX, newY];
 // }
 
-function RecordData(){
+function RecordData(previousNumHands){
+  if(previousNumHands === 2){
+    currrentSample++;
+    if(currrentSample === numSamples){
+      currrentSample = 0;
+    }
+  }
   background(0,0,0);
   //console.log(framesOfData.toString());
-  console.log( framesOfData.pick(null,null,null,1).toString());
+  //console.log( framesOfData.pick(null,null,null,1).toString());
+  console.log(currrentSample);
 }
