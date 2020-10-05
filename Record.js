@@ -1,3 +1,5 @@
+nj.config.printThreshold = 1000;
+
 var numSamples = 2;
 var currrentSample = 0;
 var framesOfData = nj.zeros([5,4,6,numSamples]);
@@ -184,6 +186,6 @@ function RecordData(previousNumHands){
   }
   background(0,0,0);
   //console.log(framesOfData.toString());
-  //console.log( framesOfData.pick(null,null,null,1).toString());
-  console.log(currrentSample);
+  console.log(framesOfData.toString());
+  //console.log(currrentSample);
 }
