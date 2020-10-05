@@ -143,6 +143,10 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
         g = 13;
         b = 9;
       }
+      currrentSamples++;
+      if(currrentSamples === numSamples){
+        currrentSamples = 0;
+      }
     }
 
     strokeWeight(weight);
