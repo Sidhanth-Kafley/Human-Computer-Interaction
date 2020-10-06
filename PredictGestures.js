@@ -16,9 +16,9 @@ function draw(){
 
 function Train(){
   for(var i=0; i<train0.shape[3]; i++){
-    var features = train0.pick(null,null,null,i).reshape(1,120).tolist();
+    var features = trainX.pick(null,null,null,i).reshape(1,120).tolist();
     knnClassifier.addExample(features, 0);
-    var features1 = train1.pick(null,null,null,i).reshape(1,120).tolist();
+    var features1 = trainY.pick(null,null,null,i).reshape(1,120).tolist();
     knnClassifier.addExample(features1, 1);
   }
 
