@@ -15,8 +15,9 @@ function draw(){
 }
 
 function Train(){
-  console.log(train0.toString());
-  console.log(test.toString());
+  for(var i=0; i<train0.shape[3]; i++){
+    var features = train0.pick(null,null,null,i).toString();
+  }
 }
 
 function Test(){
