@@ -1,7 +1,7 @@
 var predictedClassLabels = nj.zeros([150]);
 
 const knnClassifier = ml5.KNNClassifier();
-var testingSampleIndex = 1;
+var testingSampleIndex = 0;
 var trainingCompleted = false;
 
 
@@ -22,5 +22,16 @@ function Train(){
 }
 
 function Test(){
+  var currentTestingSample = test.pick(null,null,null,testingSampleIndex).reshape(1,120);
+  var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
+  console.log(currentTestingSample + "-----" + predictedClassLabels.get(testingSampleIndex));
 
+}
+
+function GotResults(err, result){
+  testingSampleIndex++;
+  if(testingSampleIndex>train0.shape[3]-1){
+    testingSampleIndex = 0;
+  }
+  predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
 }
