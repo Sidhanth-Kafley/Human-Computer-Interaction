@@ -11,15 +11,15 @@ function draw(){
     Train();
     trainingCompleted = true;
   }
-  Test();
+  //Test();
 }
 
 function Train(){
-  for(var i=0; i<train0.shape[3]; i++){
+  for(var i=0; i<trainX.shape[3]; i++){
     var features = trainX.pick(null,null,null,i).reshape(1,120).tolist();
-    knnClassifier.addExample(features, 0);
+    knnClassifier.addExample(features, 3);
     var features1 = trainY.pick(null,null,null,i).reshape(1,120).tolist();
-    knnClassifier.addExample(features1, 1);
+    knnClassifier.addExample(features1, 4);
   }
 
 }
