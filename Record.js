@@ -50,39 +50,34 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     //console.log(normalizePrevJoint);
     var normalizedNextJoint = InteractionBox.normalizePoint(bone[j].nextJoint, true);
     //console.log(normalizedNextJoint);
+    // var x = bone[j].nextJoint[0];
+    // var y = window.innerHeight-bone[j].nextJoint[1];
+    // var newTip = TransformCoordinates(x, y);
+    var newTipX = normalizedNextJoint[0];
+    var newTipY = normalizedNextJoint[1];
+    var z = normalizedNextJoint[2];
+    // var x1 = bone[j].prevJoint[0];
+    // var y1 = window.innerHeight-bone[j].prevJoint[1];
+    // var sum = x+y+z+x1+y1+z1;
+    var boneIndex = bone[j].type;
+
+    // var newBase = TransformCoordinates(x1, y1);
+    var newBaseX = normalizePrevJoint[0];
+    var newBaseY = normalizePrevJoint[1];
+    var z1 = normalizePrevJoint[2];
+
+    framesOfData.set(fingerIndex,boneIndex,0,currrentSample,newBaseX);
+    framesOfData.set(fingerIndex,boneIndex,1,currrentSample,newBaseY);
+    framesOfData.set(fingerIndex,boneIndex,2,currrentSample,z1);
+    framesOfData.set(fingerIndex,boneIndex,3,currrentSample,newTipX);
+    framesOfData.set(fingerIndex,boneIndex,4,currrentSample,newTipY);
+    framesOfData.set(fingerIndex,boneIndex,5,currrentSample,z);
 
     var canvasX = window.innerWidth * normalizedNextJoint[0];
     var canvasY = window.innerHeight * (1 - normalizedNextJoint[1]);
 
     var canvasX1 = window.innerWidth * normalizePrevJoint[0];
     var canvasY1 = window.innerHeight * (1 - normalizePrevJoint[1]);
-
-    // var x = bone[j].nextJoint[0];
-    // var y = window.innerHeight-bone[j].nextJoint[1];
-    var z = bone[j].nextJoint[2];
-
-    // var newTip = TransformCoordinates(x, y);
-    // var newTipX = newTip[0];
-    // var newTipY = newTip[1];
-
-    // var x1 = bone[j].prevJoint[0];
-    // var y1 = window.innerHeight-bone[j].prevJoint[1];
-    var z1 = bone[j].prevJoint[2];
-    // var sum = x+y+z+x1+y1+z1;
-
-    var boneIndex = bone[j].type;
-
-    // var newBase = TransformCoordinates(x1, y1);
-    // var newBaseX = newBase[0];
-    // var newBaseY = newBase[1];
-
-
-    framesOfData.set(fingerIndex,boneIndex,0,currrentSample,canvasX1);
-    framesOfData.set(fingerIndex,boneIndex,1,currrentSample,canvasY1);
-    framesOfData.set(fingerIndex,boneIndex,2,currrentSample,z1);
-    framesOfData.set(fingerIndex,boneIndex,3,currrentSample,canvasX);
-    framesOfData.set(fingerIndex,boneIndex,4,currrentSample,canvasY);
-    framesOfData.set(fingerIndex,boneIndex,5,currrentSample,z);
 
 
     var r,g,b = 0;
