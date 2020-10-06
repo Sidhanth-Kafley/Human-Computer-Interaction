@@ -1,6 +1,6 @@
 nj.config.printThreshold = 1000;
 
-var numSamples = 2;
+var numSamples = 100;
 var currrentSample = 0;
 var framesOfData = nj.zeros([5,4,6,numSamples]);
 var controllerOptions = {};
@@ -13,12 +13,10 @@ var currentNumHands = 0;
 
 Leap.loop(controllerOptions, function(frame)
   {
-    var currentNumHands = frame.hands.length;
+    currentNumHands = frame.hands.length;
     clear();
     HandleFrame(frame);
-    if(previousNumHands === 2 && currentNumHands === 1){
-      RecordData(previousNumHands);
-    }
+    RecordData();
     previousNumHands = currentNumHands;
   }
 );
@@ -44,27 +42,19 @@ function HandleHand(hand, frame, InteractionBox){
 }
 
 function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
-    //console.log(bone[j]);
 
     var normalizePrevJoint = InteractionBox.normalizePoint(bone[j].prevJoint, true);
-    //console.log(normalizePrevJoint);
     var normalizedNextJoint = InteractionBox.normalizePoint(bone[j].nextJoint, true);
-    //console.log(normalizedNextJoint);
-    // var x = bone[j].nextJoint[0];
-    // var y = window.innerHeight-bone[j].nextJoint[1];
-    // var newTip = TransformCoordinates(x, y);
+
     var newTipX = normalizedNextJoint[0];
     var newTipY = normalizedNextJoint[1];
     var z = normalizedNextJoint[2];
-    // var x1 = bone[j].prevJoint[0];
-    // var y1 = window.innerHeight-bone[j].prevJoint[1];
-    // var sum = x+y+z+x1+y1+z1;
-    var boneIndex = bone[j].type;
 
-    // var newBase = TransformCoordinates(x1, y1);
     var newBaseX = normalizePrevJoint[0];
     var newBaseY = normalizePrevJoint[1];
     var z1 = normalizePrevJoint[2];
+
+    var boneIndex = bone[j].type;
 
     framesOfData.set(fingerIndex,boneIndex,0,currrentSample,newBaseX);
     framesOfData.set(fingerIndex,boneIndex,1,currrentSample,newBaseY);
@@ -147,40 +137,17 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox){
     line(canvasX, canvasY, canvasX1, canvasY1);
 }
 
-// function TransformCoordinates(x, y){
-//   if(x<rawXMin){
-//     rawXMin = x;
-//   }
-//   if(x>rawXMax){
-//     rawXMax = x;
-//   }
-//   if(y<rawYMin){
-//     rawYMin = y;
-//   }
-//   if(y>rawYMax){
-//     rawYMax = y;
-//   }
-//
-//   var newX = ((x-rawXMin)/(rawXMax-rawXMin)) * (window.innerWidth - 0) + 0;
-//
-//   // I derived this formula from a base formula provided in stackexchange. The base formula is as shown below:
-//   // Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
-//   // Using this base formula I was able to derive the formula to scale the x and y values to the canvas
-//
-//   var newY = ((y-rawYMin)/(rawYMax-rawYMin)) * (window.innerHeight - 0) + 0;
-//
-//   return [newX, newY];
-// }
 
-function RecordData(previousNumHands){
-  if(previousNumHands === 2){
+function RecordData(){
+  if(previousNumHands === 2 && currentNumHands === 1){
+    background(0,0,0);
+  }
+  if(currentNumHands === 2){
     currrentSample++;
     if(currrentSample === numSamples){
       currrentSample = 0;
     }
+    console.log(framesOfData.toString());
+    console.log(currrentSample);
   }
-  background(0,0,0);
-  //console.log(framesOfData.toString());
-  console.log(framesOfData.toString());
-  //console.log(currrentSample);
 }
