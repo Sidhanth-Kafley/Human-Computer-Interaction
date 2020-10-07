@@ -142,7 +142,7 @@ function RecordData(){
   if(previousNumHands === 2 && currentNumHands === 1){
     background(0,0,0);
   }
-  if(currentNumHands === 2){
+  if(currentNumHands === 1){
     currrentSample++;
     if(currrentSample === numSamples){
       currrentSample = 0;
