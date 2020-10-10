@@ -5,14 +5,14 @@ var testingSampleIndex = 0;
 var trainingCompleted = false;
 
 
-function draw(){
+Leap.loop(controllerOptions, function(frame){
   clear();
   if(trainingCompleted === false){
     Train();
     trainingCompleted = true;
   }
   Test();
-}
+});
 
 function Train(){
   for(var i=0; i<trainX.shape[3]; i++){
