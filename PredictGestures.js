@@ -50,12 +50,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 
   var boneIndex = bone[j].type;
 
-  // framesOfData.set(fingerIndex,boneIndex,0,currrentSample,newBaseX);
-  // framesOfData.set(fingerIndex,boneIndex,1,currrentSample,newBaseY);
-  // framesOfData.set(fingerIndex,boneIndex,2,currrentSample,z1);
-  // framesOfData.set(fingerIndex,boneIndex,3,currrentSample,newTipX);
-  // framesOfData.set(fingerIndex,boneIndex,4,currrentSample,newTipY);
-  // framesOfData.set(fingerIndex,boneIndex,5,currrentSample,z);
+  framesOfData.set(fingerIndex,boneIndex,0,currrentSample,newBaseX);
+  framesOfData.set(fingerIndex,boneIndex,1,currrentSample,newBaseY);
+  framesOfData.set(fingerIndex,boneIndex,2,currrentSample,z1);
+  framesOfData.set(fingerIndex,boneIndex,3,currrentSample,newTipX);
+  framesOfData.set(fingerIndex,boneIndex,4,currrentSample,newTipY);
+  framesOfData.set(fingerIndex,boneIndex,5,currrentSample,z);
 
   var canvasX = window.innerWidth * normalizedNextJoint[0];
   var canvasY = window.innerHeight * (1 - normalizedNextJoint[1]);
