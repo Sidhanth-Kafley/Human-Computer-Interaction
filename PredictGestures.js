@@ -12,6 +12,7 @@ Leap.loop(controllerOptions, function(frame) {
     trainingCompleted = true;
   }
   HandleFrame(frame);
+  console.log(framesOfData.toString());
   Test();
 });
 
