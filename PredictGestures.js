@@ -12,8 +12,6 @@ Leap.loop(controllerOptions, function(frame) {
     trainingCompleted = true;
   }
   HandleFrame(frame);
-  console.log(framesOfData.toString());
-  Test();
 });
 
 function HandleFrame(frame) {
@@ -21,6 +19,8 @@ function HandleFrame(frame) {
     var hand = frame.hands[0];
     var InteractionBox = frame.interactionBox;
     HandleHand(hand, frame, InteractionBox);
+    console.log(framesOfData.toString());
+    Test();
   }
 }
 
