@@ -1,5 +1,5 @@
 var predictedClassLabels = nj.zeros([150]);
-var framesOfData = nj.zeros([5,4,6]);
+var oneFrameOfData = nj.zeros([5,4,6]);
 const knnClassifier = ml5.KNNClassifier();
 var testingSampleIndex = 0;
 var trainingCompleted = false;
@@ -19,7 +19,7 @@ function HandleFrame(frame) {
     var hand = frame.hands[0];
     var InteractionBox = frame.interactionBox;
     HandleHand(hand, frame, InteractionBox);
-    console.log(framesOfData.toString());
+    console.log(oneFrameOfData.toString());
     Test();
   }
 }
@@ -51,12 +51,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 
   var boneIndex = bone[j].type;
 
-  framesOfData.set(fingerIndex,boneIndex,0,newBaseX);
-  framesOfData.set(fingerIndex,boneIndex,1,newBaseY);
-  framesOfData.set(fingerIndex,boneIndex,2,z1);
-  framesOfData.set(fingerIndex,boneIndex,3,newTipX);
-  framesOfData.set(fingerIndex,boneIndex,4,newTipY);
-  framesOfData.set(fingerIndex,boneIndex,5,z);
+  oneFrameOfData.set(fingerIndex,boneIndex,0,newBaseX);
+  oneFrameOfData.set(fingerIndex,boneIndex,1,newBaseY);
+  oneFrameOfData.set(fingerIndex,boneIndex,2,z1);
+  oneFrameOfData.set(fingerIndex,boneIndex,3,newTipX);
+  oneFrameOfData.set(fingerIndex,boneIndex,4,newTipY);
+  oneFrameOfData.set(fingerIndex,boneIndex,5,z);
 
   var canvasX = window.innerWidth * normalizedNextJoint[0];
   var canvasY = window.innerHeight * (1 - normalizedNextJoint[1]);
