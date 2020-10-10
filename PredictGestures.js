@@ -1,5 +1,5 @@
 var predictedClassLabels = nj.zeros([150]);
-
+var framesOfData = nj.zeros([5,4,6]);
 const knnClassifier = ml5.KNNClassifier();
 var testingSampleIndex = 0;
 var trainingCompleted = false;
