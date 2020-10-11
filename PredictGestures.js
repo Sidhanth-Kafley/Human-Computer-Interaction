@@ -111,13 +111,13 @@ function Train() {
 function Test() {
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
-  console.log(testingSampleIndex + "-----" + predictedClassLabels.get(testingSampleIndex));
+  console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
 
 }
 
 function GotResults(err, result) {
   testingSampleIndex += 1;
-  if (testingSampleIndex > trainX.shape[3]) {
+  if (testingSampleIndex >= trainX.shape[3]) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
