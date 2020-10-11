@@ -4,6 +4,7 @@ const knnClassifier = ml5.KNNClassifier();
 var testingSampleIndex = 0;
 var trainingCompleted = false;
 var controllerOptions = {};
+nj.config.printThreshold = 6;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -19,7 +20,7 @@ function HandleFrame(frame) {
     var hand = frame.hands[0];
     var InteractionBox = frame.interactionBox;
     HandleHand(hand, frame, InteractionBox);
-    console.log(oneFrameOfData.toString());
+    //console.log(oneFrameOfData.toString());
     Test();
   }
 }
@@ -98,10 +99,12 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 
 function Train() {
   for (var i = 0; i < trainX.shape[3]; i++) {
-    var features = trainX.pick(null, null, null, i).reshape(1, 120).tolist();
-    var features1 = trainY.pick(null, null, null, i).reshape(1, 120).tolist();
-    knnClassifier.addExample(features, 3);
-    knnClassifier.addExample(features1, 4);
+    var features = trainX.pick(null, null, null, i).reshape(1, 120);
+    var features1 = trainY.pick(null, null, null, i).reshape(1, 120);
+    knnClassifier.addExample(features.tolist(), 3);
+    knnClassifier.addExample(features1.tolist(), 4);
+    console.log(i + " " + features.toString());
+    console.log(i + " " +  features1.toString());
   }
 }
 
@@ -114,7 +117,7 @@ function Test() {
 
 function GotResults(err, result) {
   testingSampleIndex += 1;
-  if (testingSampleIndex > test.shape[3] - 1) {
+  if (testingSampleIndex > trainX.shape[3]) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
