@@ -106,7 +106,7 @@ function Train() {
 }
 
 function Test() {
-  var currentTestingSample = test.pick(null, null, null, testingSampleIndex).reshape(1, 120);
+  var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   console.log(testingSampleIndex + "-----" + predictedClassLabels.get(testingSampleIndex));
 
