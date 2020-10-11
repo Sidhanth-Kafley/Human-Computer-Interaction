@@ -98,9 +98,9 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 }
 
 function Train() {
-  for (var i = 0; i < trainX.shape[3]; i++) {
-    var features = trainX.pick(null, null, null, i).reshape(1, 120);
-    var features1 = trainY.pick(null, null, null, i).reshape(1, 120);
+  for (var i = 0; i < train3.shape[3]; i++) {
+    var features = train3.pick(null, null, null, i).reshape(1, 120);
+    var features1 = train4.pick(null, null, null, i).reshape(1, 120);
     knnClassifier.addExample(features.tolist(), 3);
     knnClassifier.addExample(features1.tolist(), 4);
     console.log(i + " " + features.toString());
@@ -117,7 +117,7 @@ function Test() {
 
 function GotResults(err, result) {
   testingSampleIndex += 1;
-  if (testingSampleIndex >= trainX.shape[3]) {
+  if (testingSampleIndex >= train3.shape[3]) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
