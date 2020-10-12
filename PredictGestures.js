@@ -132,5 +132,5 @@ function GotResults(err, result) {
 }
 
 function CenterData(){
-  
+  xValues = oneFrameOfData.slice([],[],[0,6,3]);
 }
