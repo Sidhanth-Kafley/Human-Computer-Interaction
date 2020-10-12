@@ -133,5 +133,7 @@ function GotResults(err, result) {
 
 function CenterData(){
   xValues = oneFrameOfData.slice([],[],[0,6,3]);
-  console.log(xValues.shape);
+  //console.log(xValues.shape);
+  var currentMean = xValues.mean();
+  console.log(currentMean);
 }
