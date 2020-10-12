@@ -122,7 +122,7 @@ function Test() {
   var d = 4;
   n++;
   m = ((n-1)*m + (c == d))/n;
-  //console.log(n + " " + m + " " + c);
+  console.log(n + " " + m + " " + c);
 }
 
 function GotResults(err, result) {
@@ -172,7 +172,7 @@ function CenterYData(){
     }
   }
   var currentYMean = yValues.mean();
-  console.log(currentYMean);
+  //console.log(currentYMean);
 }
 
 function CenterZData(){
