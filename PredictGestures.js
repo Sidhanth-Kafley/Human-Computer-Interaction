@@ -5,6 +5,7 @@ var testingSampleIndex = 0;
 var trainingCompleted = false;
 var controllerOptions = {};
 nj.config.printThreshold = 6;
+var counter = 0;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
