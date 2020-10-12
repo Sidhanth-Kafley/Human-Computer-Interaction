@@ -119,7 +119,7 @@ function Test() {
   var d = 4;
   n++;
   m = ((n-1)*m + (c == d))/n;
-  console.log(n + " " + m + " " + c);
+  //console.log(n + " " + m + " " + c);
 }
 
 function GotResults(err, result) {
