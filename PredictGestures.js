@@ -119,7 +119,7 @@ function Test() {
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
   var c = predictedClassLabels.get(testingSampleIndex);
-  var d = 3;
+  var d = 4;
   n++;
   m = ((n-1)*m + (c == d))/n;
   console.log(n + " " + m + " " + c);
