@@ -193,5 +193,5 @@ function CenterZData(){
     }
   }
   var currentZMean = zValues.mean();
-  console.log(currentZMean);
+  //console.log(currentZMean);
 }
