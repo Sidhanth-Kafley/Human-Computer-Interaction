@@ -112,6 +112,7 @@ function Train() {
 }
 
 function Test() {
+  CenterData();
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
@@ -128,4 +129,8 @@ function GotResults(err, result) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
+}
+
+function CenterData(){
+  
 }
