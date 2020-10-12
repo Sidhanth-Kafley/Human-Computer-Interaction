@@ -112,7 +112,8 @@ function Train() {
 }
 
 function Test() {
-  CenterData();
+  CenterXData();
+  CenterYData();
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
@@ -131,12 +132,12 @@ function GotResults(err, result) {
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
 }
 
-function CenterData(){
+function CenterXData(){
   xValues = oneFrameOfData.slice([],[],[0,6,3]);
   //console.log(xValues.shape);
-  var currentMean = xValues.mean();
+  var currentXMean = xValues.mean();
   //console.log(currentMean);
-  var horizontalShift = 0.5 - currentMean;
+  var horizontalShift = 0.5 - currentXMean;
   //console.log(horizontalShift);
   for (var currentRow=0; currentRow<xValues.shape[0]; currentRow++){
     for(var currentColumn=0; currentColumn<xValues.shape[1]; currentColumn++){
@@ -148,8 +149,27 @@ function CenterData(){
       oneFrameOfData.set(currentRow,currentColumn,3, shiftedX);
     }
   }
-  xValues = oneFrameOfData.slice([],[],[0,6,3]);
+  var currentXMean = xValues.mean();
+  //console.log(currentXMean);
+}
+
+function CenterYData(){
+  yValues = oneFrameOfData.slice([],[],[1,6,3]);
   //console.log(xValues.shape);
-  var currentMean = xValues.mean();
+  var currentYMean = yValues.mean();
   //console.log(currentMean);
+  var verticalShift = 0.5 - currentYMean;
+  //console.log(horizontalShift);
+  for (var currentRow=0; currentRow<xValues.shape[0]; currentRow++){
+    for(var currentColumn=0; currentColumn<xValues.shape[1]; currentColumn++){
+      currentY = oneFrameOfData.get(currentRow,currentColumn,1);
+      shiftedY = currentY + verticalShift;
+      oneFrameOfData.set(currentRow,currentColumn,1, shiftedY);
+      currentY = oneFrameOfData.get(currentRow,currentColumn,4);
+      shiftedY = currentY + verticalShift;
+      oneFrameOfData.set(currentRow,currentColumn,4, shiftedY);
+    }
+  }
+  var currentYMean = yValues.mean();
+  console.log(currentYMean);
 }
