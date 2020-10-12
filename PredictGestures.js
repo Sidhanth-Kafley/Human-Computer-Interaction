@@ -114,6 +114,7 @@ function Train() {
 function Test() {
   CenterXData();
   CenterYData();
+  CenterZData();
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
@@ -172,4 +173,25 @@ function CenterYData(){
   }
   var currentYMean = yValues.mean();
   console.log(currentYMean);
+}
+
+function CenterZData(){
+  zValues = oneFrameOfData.slice([],[],[2,6,3]);
+  //console.log(xValues.shape);
+  var currentZMean = zValues.mean();
+  //console.log(currentMean);
+  var zShift = 0.5 - currentZMean;
+  //console.log(horizontalShift);
+  for (var currentRow=0; currentRow<xValues.shape[0]; currentRow++){
+    for(var currentColumn=0; currentColumn<xValues.shape[1]; currentColumn++){
+      currentZ = oneFrameOfData.get(currentRow,currentColumn,2);
+      shiftedZ = currentZ + zShift;
+      oneFrameOfData.set(currentRow,currentColumn,2, shiftedZ);
+      currentZ = oneFrameOfData.get(currentRow,currentColumn,5);
+      shiftedZ = currentZ +zShift;
+      oneFrameOfData.set(currentRow,currentColumn,5, shiftedZ);
+    }
+  }
+  var currentZMean = zValues.mean();
+  console.log(currentZMean);
 }
