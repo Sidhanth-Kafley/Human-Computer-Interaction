@@ -135,5 +135,7 @@ function CenterData(){
   xValues = oneFrameOfData.slice([],[],[0,6,3]);
   //console.log(xValues.shape);
   var currentMean = xValues.mean();
-  console.log(currentMean);
+  //console.log(currentMean);
+  var horizontalShift = 0.5 - currentMean;
+  console.log(horizontalShift);
 }
