@@ -6,6 +6,8 @@ var trainingCompleted = false;
 var controllerOptions = {};
 nj.config.printThreshold = 6;
 var counter = 0;
+var n = 0;
+var m=1;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -112,8 +114,12 @@ function Train() {
 function Test() {
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
-  console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
-
+  //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
+  var c = predictedClassLabels.get(testingSampleIndex);
+  var d = 4;
+  n++;
+  m = ((n-1)*m + (c == d))/n;
+  console.log(n + " " + m + " " + c);
 }
 
 function GotResults(err, result) {
