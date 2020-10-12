@@ -137,19 +137,19 @@ function CenterData(){
   var currentMean = xValues.mean();
   //console.log(currentMean);
   var horizontalShift = 0.5 - currentMean;
-  console.log(horizontalShift);
+  //console.log(horizontalShift);
   for (var currentRow=0; currentRow<xValues.shape[0]; currentRow++){
     for(var currentColumn=0; currentColumn<xValues.shape[1]; currentColumn++){
       currentX = oneFrameOfData.get(currentRow,currentColumn,0);
       shiftedX = currentX + horizontalShift;
       oneFrameOfData.set(currentRow,currentColumn,0, shiftedX);
-      currentX = oneFrameOfData.get(currentRow,currentColumn,0);
+      currentX = oneFrameOfData.get(currentRow,currentColumn,3);
       shiftedX = currentX + horizontalShift;
-      oneFrameOfData.set(currentRow,currentColumn,0, shiftedX);
+      oneFrameOfData.set(currentRow,currentColumn,3, shiftedX);
     }
   }
   xValues = oneFrameOfData.slice([],[],[0,6,3]);
   //console.log(xValues.shape);
   var currentMean = xValues.mean();
-  console.log(currentMean);
+  //console.log(currentMean);
 }
