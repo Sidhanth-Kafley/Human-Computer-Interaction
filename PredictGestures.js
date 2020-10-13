@@ -102,12 +102,39 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 
 function Train() {
   for (var i = 0; i < train3.shape[3]; i++) {
-    var features = train3.pick(null, null, null, i).reshape(1, 120);
-    var features1 = train4.pick(null, null, null, i).reshape(1, 120);
-    knnClassifier.addExample(features.tolist(), 3);
-    knnClassifier.addExample(features1.tolist(), 4);
-    console.log(i + " " + features.toString());
-    console.log(i + " " +  features1.toString());
+    var features0 = train0.pick(null, null, null, i).reshape(1, 120);
+    var features1 = train1.pick(null, null, null, i).reshape(1, 120);
+    var features2 = train2.pick(null, null, null, i).reshape(1, 120);
+    var features3 = train3.pick(null, null, null, i).reshape(1, 120);
+    var features4 = train4.pick(null, null, null, i).reshape(1, 120);
+    var features5 = train5.pick(null, null, null, i).reshape(1, 120);
+    var features6 = train6.pick(null, null, null, i).reshape(1, 120);
+    var features7 = train7.pick(null, null, null, i).reshape(1, 120);
+    var features8 = train8.pick(null, null, null, i).reshape(1, 120);
+    var features9 = train9.pick(null, null, null, i).reshape(1, 120);
+
+    knnClassifier.addExample(features0.tolist(), 0);
+    knnClassifier.addExample(features1.tolist(), 1);
+    knnClassifier.addExample(features2.tolist(), 2);
+    knnClassifier.addExample(features3.tolist(), 3);
+    knnClassifier.addExample(features4.tolist(), 4);
+    knnClassifier.addExample(features5.tolist(), 5);
+    knnClassifier.addExample(features6.tolist(), 6);
+    knnClassifier.addExample(features7.tolist(), 7);
+    knnClassifier.addExample(features8.tolist(), 8);
+    knnClassifier.addExample(features9.tolist(), 9);
+
+    console.log(i + " " + features0.toString());
+    console.log(i + " " + features1.toString());
+    console.log(i + " " + features2.toString());
+    console.log(i + " " + features3.toString());
+    console.log(i + " " + features4.toString());
+    console.log(i + " " + features5.toString());
+    console.log(i + " " + features6.toString());
+    console.log(i + " " + features7.toString());
+    console.log(i + " " + features8.toString());
+    console.log(i + " " + features9.toString());
+
   }
 }
 
@@ -119,7 +146,7 @@ function Test() {
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
   var c = predictedClassLabels.get(testingSampleIndex);
-  var d = 4;
+  var d = 2;
   n++;
   m = ((n-1)*m + (c == d))/n;
   console.log(n + " " + m + " " + c);
