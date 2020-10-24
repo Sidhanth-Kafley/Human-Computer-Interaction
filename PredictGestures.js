@@ -149,7 +149,7 @@ function Test() {
   var d = 2;
   n++;
   m = ((n-1)*m + (c == d))/n;
-  console.log(n + " " + m + " " + c);
+  //console.log(n + " " + m + " " + c);
 }
 
 function GotResults(err, result) {
@@ -158,6 +158,7 @@ function GotResults(err, result) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
+  console.log(predictedClassLabels.get(testingSampleIndex));
 }
 
 function CenterXData(){
