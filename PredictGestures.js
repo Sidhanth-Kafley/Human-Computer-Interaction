@@ -103,24 +103,42 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 function Train() {
   for (var i = 0; i < train3.shape[3]; i++) {
     var features0 = train0.pick(null, null, null, i).reshape(1, 120);
+    var features0ReckordGroten = train0ReckordGroten.pick(null, null, null, i).reshape(1, 120);
     var features1 = train1.pick(null, null, null, i).reshape(1, 120);
     var features2 = train2.pick(null, null, null, i).reshape(1, 120);
+    var features2Sheboy = train2Sheboy.pick(null, null, null, i).reshape(1, 120);
+    var features2Liu = train2Liu.pick(null, null, null, i).reshape(1, 120);
     var features3 = train3.pick(null, null, null, i).reshape(1, 120);
     var features4 = train4.pick(null, null, null, i).reshape(1, 120);
+    var features4Beattie = train4Beattie.pick(null, null, null, i).reshape(1, 120);
+    var features4Socia = train4Socia.pick(null, null, null, i).reshape(1, 120);
+    var features4OBrien = train4OBrien.pick(null, null, null, i).reshape(1, 120);
     var features5 = train5.pick(null, null, null, i).reshape(1, 120);
     var features6 = train6.pick(null, null, null, i).reshape(1, 120);
     var features7 = train7.pick(null, null, null, i).reshape(1, 120);
+    var features7Vega = train7Vega.pick(null, null, null, i).reshape(1, 120);
+    var features7Menian = train7Menian.pick(null, null, null, i).reshape(1, 120);
+    //var features7Fisher = train7Fisher.pick(null, null, null, i).reshape(1, 120);
     var features8 = train8.pick(null, null, null, i).reshape(1, 120);
     var features9 = train9.pick(null, null, null, i).reshape(1, 120);
 
     knnClassifier.addExample(features0.tolist(), 0);
+    knnClassifier.addExample(features0ReckordGroten.tolist(), 0);
     knnClassifier.addExample(features1.tolist(), 1);
     knnClassifier.addExample(features2.tolist(), 2);
+    knnClassifier.addExample(features2Sheboy.tolist(), 2);
+    knnClassifier.addExample(features2Liu.tolist(), 2);
     knnClassifier.addExample(features3.tolist(), 3);
     knnClassifier.addExample(features4.tolist(), 4);
+    knnClassifier.addExample(features4Beattie.tolist(), 4);
+    knnClassifier.addExample(features4Socia.tolist(), 4);
+    knnClassifier.addExample(features4OBrien.tolist(), 4);
     knnClassifier.addExample(features5.tolist(), 5);
     knnClassifier.addExample(features6.tolist(), 6);
     knnClassifier.addExample(features7.tolist(), 7);
+    knnClassifier.addExample(features7Vega.tolist(), 7);
+    //knnClassifier.addExample(features7Fisher.tolist(), 7);
+    knnClassifier.addExample(features7Menian.tolist(), 7);
     knnClassifier.addExample(features8.tolist(), 8);
     knnClassifier.addExample(features9.tolist(), 9);
 
