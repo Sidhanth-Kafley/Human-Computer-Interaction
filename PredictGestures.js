@@ -25,6 +25,9 @@ function DetermineState(frame){
   if(frame.hands.length === 0){
     programState = 0;
   }
+  else{
+    programState = 1;
+  }
 }
 
 function HandleState0(frame){
