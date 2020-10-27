@@ -8,15 +8,29 @@ nj.config.printThreshold = 6;
 var counter = 0;
 var n = 0;
 var m=1;
+var programState=0;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
+  DetermineState(frame);
+  if(programState==0){
+    HandleState0(frame);
+  }
+  else if(programState==1){
+    HandleState1(frame);
+  }
   // if (trainingCompleted === false) {
   //   Train();
   //   trainingCompleted = true;
   // }
   HandleFrame(frame);
 });
+
+function DetermineState(frame){
+  if(frame.hands.length === 0){
+    programState = 0;
+  }
+}
 
 function HandleFrame(frame) {
   if (frame.hands.length === 1 || frame.hands.length === 2) {
