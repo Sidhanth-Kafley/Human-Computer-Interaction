@@ -19,11 +19,6 @@ Leap.loop(controllerOptions, function(frame) {
   else if(programState==1){
     HandleState1(frame);
   }
-  // if (trainingCompleted === false) {
-  //   Train();
-  //   trainingCompleted = true;
-  // }
-  HandleFrame(frame);
 });
 
 function DetermineState(frame){
@@ -32,13 +27,33 @@ function DetermineState(frame){
   }
 }
 
+function HandleState0(frame){
+  TrainKNNIfNotDoneYet()
+  DrawImageToHelpUserPutTheirHandOverTheDevice()
+}
+
+function TrainKNNIfNotDoneYet(){
+  // if (trainingCompleted === false) {
+  //   Train();
+  //   trainingCompleted = true;
+  // }
+}
+
+function DrawImageToHelpUserPutTheirHandOverTheDevice(){
+
+}
+
+function HandleState1(frame){
+  HandleFrame(frame);
+  //Test();
+}
+
 function HandleFrame(frame) {
   if (frame.hands.length === 1 || frame.hands.length === 2) {
     var hand = frame.hands[0];
     var InteractionBox = frame.interactionBox;
     HandleHand(hand, frame, InteractionBox);
     //console.log(oneFrameOfData.toString());
-    //Test();
   }
 }
 
