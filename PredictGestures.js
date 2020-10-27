@@ -43,7 +43,7 @@ function TrainKNNIfNotDoneYet(){
 }
 
 function DrawImageToHelpUserPutTheirHandOverTheDevice(){
-
+  image(img, 0, 0, window.innerWidth/2, window.innerHeight/2);
 }
 
 function HandleState1(frame){
