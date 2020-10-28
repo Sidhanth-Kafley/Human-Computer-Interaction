@@ -70,6 +70,12 @@ function HandleState1(frame){
   if(HandIsTooFarToTheRight()){
     DrawArrowLeft();
   }
+  if(HandIsTooFarDown()){
+    DrawArrowUp();
+  }
+  if(HandIsTooFarHigh()){
+    DrawArrowDown();
+  }
 }
 
 function HandleState2(frame){
@@ -306,8 +312,19 @@ function HandIsUncentered(){
   }
   else if(HandIsTooFarToTheRight()){
     return true;
+  }else if(HandIsTooFarDown()){
+    return true;
+  }else if(HandIsTooFarHigh()){
+    return true;
   }
-  return false;
+  // }else if(HandIsTooFarForward()){
+  //   return true;
+  // }else if(HandIsTooFarBackward()){
+  //   return true;
+  // }
+  else{
+    return false;
+  }
 }
 
 
@@ -341,4 +358,36 @@ function HandIsTooFarToTheRight(){
 
 function DrawArrowLeft(){
   image(arrowLeft, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
+}
+
+function HandIsTooFarDown(){
+  yValues = oneFrameOfData.slice([],[],[1,6,3]);
+  var currentYMean = yValues.mean();
+
+  if(currentYMean < 0.25){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowUp(){
+  image(arrowUp, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
+}
+
+function HandIsTooFarHigh(){
+  yValues = oneFrameOfData.slice([],[],[1,6,3]);
+  var currentYMean = yValues.mean();
+
+  if(currentYMean > 0.75){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowDown(){
+  image(arrowDown, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
 }
