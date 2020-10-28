@@ -46,6 +46,15 @@ function DrawImageToHelpUserPutTheirHandOverTheDevice(){
   image(img, 0, 0, window.innerWidth/2, window.innerHeight/2);
 }
 
+image(arrowLeft, 0, 0, window.innerWidth/2, window.innerHeight/2);
+image(arrowRight, 0, 0, window.innerWidth/2, window.innerHeight/2);
+image(arrowDown, 0, 0, window.innerWidth/2, window.innerHeight/2);
+image(arrowUp, 0, 0, window.innerWidth/2, window.innerHeight/2);
+image(arrowToward, 0, 0, window.innerWidth/2, window.innerHeight/2);
+image(arrowAway, 0, 0, window.innerWidth/2, window.innerHeight/2);
+
+
+
 function HandleState1(frame){
   HandleFrame(frame);
   //Test();
