@@ -19,14 +19,20 @@ Leap.loop(controllerOptions, function(frame) {
   else if(programState==1){
     HandleState1(frame);
   }
+  else{
+    HandleState2(frame);
+  }
 });
 
 function DetermineState(frame){
   if(frame.hands.length === 0){
     programState = 0;
   }
-  else{
+  else if(HandIsUncentered()){
     programState = 1;
+  }
+  else{
+    programState = 2;
   }
 }
 
@@ -46,16 +52,24 @@ function DrawImageToHelpUserPutTheirHandOverTheDevice(){
   image(img, 0, 0, window.innerWidth/2, window.innerHeight/2);
 }
 
-image(arrowLeft, 0, 0, window.innerWidth/2, window.innerHeight/2);
-image(arrowRight, 0, 0, window.innerWidth/2, window.innerHeight/2);
-image(arrowDown, 0, 0, window.innerWidth/2, window.innerHeight/2);
-image(arrowUp, 0, 0, window.innerWidth/2, window.innerHeight/2);
-image(arrowToward, 0, 0, window.innerWidth/2, window.innerHeight/2);
-image(arrowAway, 0, 0, window.innerWidth/2, window.innerHeight/2);
+// image(arrowLeft, 0, 0, window.innerWidth/2, window.innerHeight/2);
+//
+// image(arrowDown, 0, 0, window.innerWidth/2, window.innerHeight/2);
+// image(arrowUp, 0, 0, window.innerWidth/2, window.innerHeight/2);
+// image(arrowToward, 0, 0, window.innerWidth/2, window.innerHeight/2);
+// image(arrowAway, 0, 0, window.innerWidth/2, window.innerHeight/2);
 
 
 
 function HandleState1(frame){
+  HandleFrame(frame);
+  //Test();
+  if(HandIsTooFarToTheLeft()){
+    DrawArrowRight();
+  }
+}
+
+function HandleState2(frame){
   HandleFrame(frame);
   //Test();
 }
@@ -281,4 +295,28 @@ function CenterZData(){
   }
   var currentZMean = zValues.mean();
   //console.log(currentZMean);
+}
+
+function HandIsUncentered(){
+  if(HandIsTooFarToTheLeft()){
+    return true;
+  }
+  return false;
+}
+
+
+function HandIsTooFarToTheLeft(){
+  xValues = oneFrameOfData.slice([],[],[0,6,3]);
+  var currentXMean = xValues.mean();
+
+  if(currentXMean < 0.25){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowRight(){
+  image(arrowRight, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
 }
