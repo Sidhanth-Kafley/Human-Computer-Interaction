@@ -76,6 +76,12 @@ function HandleState1(frame){
   if(HandIsTooFarHigh()){
     DrawArrowDown();
   }
+  if(HandIsTooFarForward()){
+    DrawArrowBackwards();
+  }
+  if(HandIsTooFarBackward()){
+    DrawArrowForwards();
+  }
 }
 
 function HandleState2(frame){
@@ -312,16 +318,19 @@ function HandIsUncentered(){
   }
   else if(HandIsTooFarToTheRight()){
     return true;
-  }else if(HandIsTooFarDown()){
-    return true;
-  }else if(HandIsTooFarHigh()){
+  }
+  else if(HandIsTooFarDown()){
     return true;
   }
-  // }else if(HandIsTooFarForward()){
-  //   return true;
-  // }else if(HandIsTooFarBackward()){
-  //   return true;
-  // }
+  else if(HandIsTooFarHigh()){
+    return true;
+  }
+  else if(HandIsTooFarForward()){
+    return true;
+  }
+  else if(HandIsTooFarBackward()){
+    return true;
+  }
   else{
     return false;
   }
@@ -390,4 +399,36 @@ function HandIsTooFarHigh(){
 
 function DrawArrowDown(){
   image(arrowDown, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
+}
+
+function HandIsTooFarForward(){
+  zValues = oneFrameOfData.slice([],[],[2,6,3]);
+  var currentZMean = zValues.mean();
+
+  if(currentZMean < 0.25){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowBackwards(){
+  image(arrowToward, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
+}
+
+function HandIsTooFarBackward(){
+  zValues = oneFrameOfData.slice([],[],[2,6,3]);
+  var currentZMean = zValues.mean();
+
+  if(currentZMean > 0.75){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowForwards(){
+  image(arrowAway, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
 }
