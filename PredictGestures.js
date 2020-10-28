@@ -67,6 +67,9 @@ function HandleState1(frame){
   if(HandIsTooFarToTheLeft()){
     DrawArrowRight();
   }
+  if(HandIsTooFarToTheRight()){
+    DrawArrowLeft();
+  }
 }
 
 function HandleState2(frame){
@@ -301,6 +304,9 @@ function HandIsUncentered(){
   if(HandIsTooFarToTheLeft()){
     return true;
   }
+  else if(HandIsTooFarToTheRight()){
+    return true;
+  }
   return false;
 }
 
@@ -319,4 +325,20 @@ function HandIsTooFarToTheLeft(){
 
 function DrawArrowRight(){
   image(arrowRight, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
+}
+
+function HandIsTooFarToTheRight(){
+  xValues = oneFrameOfData.slice([],[],[0,6,3]);
+  var currentXMean = xValues.mean();
+
+  if(currentXMean > 0.75){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function DrawArrowLeft(){
+  image(arrowLeft, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
 }
