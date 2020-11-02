@@ -432,3 +432,7 @@ function HandIsTooFarBackward(){
 function DrawArrowForwards(){
   image(arrowAway, window.innerWidth/2, 0, window.innerWidth/2, window.innerHeight/2);
 }
+
+function SignIn(){
+  console.log("Function has been called");
+}
