@@ -437,13 +437,21 @@ function SignIn(){
   username = document.getElementById('username').value;
   //console.log(username);
   var list = document.getElementById('users');
+
   if(IsNewUser(username,list)){
     var item = document.createElement('li');
+    item.id = String(username) + "_name";
     item.innerHTML = String(username);
     list.appendChild(item);
+
+    item = document.createElement('li');
+    item.id = String(username) + "_signins";
+    item.innerHTML = 1;
+    list.appendChild(item);
+
   }
   console.log(list.innerHTML);
-  console.log(list);
+  //console.log(list);
   return false;
 }
 
@@ -454,8 +462,8 @@ function IsNewUser(username,list){
     if(username == users[i].innerHTML){
       usernameFound = true;
     }
-    console.log(users[i]);
-    console.log(users[i].innerHTML);
+    //console.log(users[i]);
+    //console.log(users[i].innerHTML);
   }
   return usernameFound == false;
 }
