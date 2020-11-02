@@ -441,4 +441,5 @@ function SignIn(){
   item.innerHTML = String(username);
   list.appendChild(item);
   console.log(list.innerHTML);
+  return false;
 }
