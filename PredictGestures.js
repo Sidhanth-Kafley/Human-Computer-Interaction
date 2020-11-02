@@ -443,9 +443,19 @@ function SignIn(){
     list.appendChild(item);
   }
   console.log(list.innerHTML);
+  console.log(list);
   return false;
 }
 
 function IsNewUser(username,list){
   var users = list.children;
+  var usernameFound = false;
+  for(var i=0; i<users.length; i++){
+    if(username == users[i].innerHTML){
+      usernameFound = true;
+    }
+    console.log(users[i]);
+    console.log(users[i].innerHTML);
+  }
+  return usernameFound == false;
 }
