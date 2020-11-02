@@ -435,5 +435,10 @@ function DrawArrowForwards(){
 
 function SignIn(){
   username = document.getElementById('username').value;
-  console.log(username);
+  //console.log(username);
+  var list = document.getElementById('users');
+  var item = document.createElement('li');
+  item.innerHTML = String(username);
+  list.appendChild(item);
+  console.log(list.innerHTML);
 }
