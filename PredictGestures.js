@@ -442,6 +442,11 @@ function SignIn(){
     CreateNewUser(username, list);
     CreateSignInItem(username, list)
   }
+  else{
+    ID = String(username) + "_signins";
+    listItem = document.getElementById( ID );
+    listItem.innerHTML = parseInt(listItem.innerHTML) + 1;
+  }
   console.log(list.innerHTML);
   //console.log(list);
   return false;
