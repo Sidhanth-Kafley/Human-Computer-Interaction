@@ -87,6 +87,7 @@ function HandleState1(frame){
 
 function HandleState2(frame){
   HandleFrame(frame);
+  DrawLowerRightPanel();
   //Test();
 }
 

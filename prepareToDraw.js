@@ -17,6 +17,6 @@ function setup() {
   arrowDown = loadImage('https://i.imgur.com/5QJps1f.jpg');
   arrowToward = loadImage('https://i.imgur.com/bOtXWSW.jpg');
   arrowAway = loadImage('https://i.imgur.com/0WBp1OF.jpg');
-  aslThree = loadImage('https://imgur.com/a/N0Iutas');
-  aslFive = loadImage('https://imgur.com/a/ncZqXyH');
+  aslThree = loadImage('https://i.imgur.com/iCMIupS.jpg');
+  aslFive = loadImage('hhttps://i.imgur.com/fgKhX2t.jpg');
 }
