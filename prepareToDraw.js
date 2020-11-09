@@ -5,6 +5,8 @@ var arrowUp;
 var arrowDown;
 var arrowToward;
 var arrowAway;
+var aslThree;
+var aslFive;
 
 function setup() {
   createCanvas(window.innerWidth,window.innerHeight);
@@ -15,4 +17,6 @@ function setup() {
   arrowDown = loadImage('https://i.imgur.com/5QJps1f.jpg');
   arrowToward = loadImage('https://i.imgur.com/bOtXWSW.jpg');
   arrowAway = loadImage('https://i.imgur.com/0WBp1OF.jpg');
+  aslThree = loadImage('https://imgur.com/a/N0Iutas');
+  aslFive = loadImage('https://imgur.com/a/ncZqXyH');
 }
