@@ -9,6 +9,7 @@ var counter = 0;
 var n = 0;
 var m=1;
 var programState=0;
+var digitToShow = aslThree;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
