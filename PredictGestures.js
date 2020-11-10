@@ -9,7 +9,7 @@ var counter = 0;
 var n = 0;
 var m=1;
 var programState=0;
-var digitToShow = 1;
+var digitToShow = 5;
 var timeSinceLastDigitChange = new Date();
 
 Leap.loop(controllerOptions, function(frame) {
