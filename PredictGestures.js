@@ -505,13 +505,14 @@ function SwitchDigits(){
   else{
     digitToShow = 3;
   }
+  timeSinceLastDigitChange = new Date();
 }
 
 function TimeToSwitchDigits(){
   var currentTime = new Date();
-  var timeLapsedInMilliseconds = timeSinceLastDigitChange-currentTime;
+  var timeLapsedInMilliseconds = currentTime - timeSinceLastDigitChange;
   var timeLapsedInSeconds = timeLapsedInMilliseconds/1000;
   if (timeLapsedInSeconds > 1){
       return true;
-  }  
+  }
 }
