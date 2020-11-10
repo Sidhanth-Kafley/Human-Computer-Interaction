@@ -250,6 +250,7 @@ function GotResults(err, result) {
   var c = predictedClassLabels.get(testingSampleIndex);
   var d = digitToShow;
   n++;
+
   m = ((n-1)*m + (c == d))/n;
   console.log(n + " " + m + " " + c);
 }
@@ -507,6 +508,7 @@ function SwitchDigits(){
     digitToShow = 3;
   }
   timeSinceLastDigitChange = new Date();
+  n=0;
 }
 
 function TimeToSwitchDigits(){
