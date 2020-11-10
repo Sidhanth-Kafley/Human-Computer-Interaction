@@ -88,6 +88,7 @@ function HandleState1(frame){
 function HandleState2(frame){
   HandleFrame(frame);
   DrawLowerRightPanel();
+  DetermineWhetherToSwitchDigits();
   //Test();
 }
 
@@ -487,5 +488,14 @@ function DrawLowerRightPanel(){
   }
   else{
     image(aslFive, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+}
+
+function DetermineWhetherToSwitchDigits(){
+  if(digitToShow === 3){
+    digitToShow = 5;
+  }
+  else{
+    digitToShow = 3;
   }
 }
