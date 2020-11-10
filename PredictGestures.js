@@ -493,7 +493,7 @@ function DrawLowerRightPanel(){
 }
 
 function DetermineWhetherToSwitchDigits(){
-  if(TimeToSwitchDigits() == True){
+  if(TimeToSwitchDigits()){
     SwitchDigits();
   }
 }
@@ -505,4 +505,8 @@ function SwitchDigits(){
   else{
     digitToShow = 3;
   }
+}
+
+function TimeToSwitchDigits(){
+  return true;
 }
