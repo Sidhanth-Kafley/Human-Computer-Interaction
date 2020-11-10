@@ -10,6 +10,7 @@ var n = 0;
 var m=1;
 var programState=0;
 var digitToShow = 3;
+var timeSinceLastDigitChange = new Date();
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -492,6 +493,12 @@ function DrawLowerRightPanel(){
 }
 
 function DetermineWhetherToSwitchDigits(){
+  if(TimeToSwitchDigits() == True){
+    SwitchDigits();
+  }
+}
+
+function SwitchDigits(){
   if(digitToShow === 3){
     digitToShow = 5;
   }
