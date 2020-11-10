@@ -508,5 +508,10 @@ function SwitchDigits(){
 }
 
 function TimeToSwitchDigits(){
-  return true;
+  var currentTime = new Date();
+  var timeLapsedInMilliseconds = timeSinceLastDigitChange-currentTime;
+  var timeLapsedInSeconds = timeLapsedInMilliseconds/1000;
+  if (timeLapsedInSeconds > 1){
+      return true;
+  }  
 }
