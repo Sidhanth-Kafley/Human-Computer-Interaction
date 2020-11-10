@@ -9,7 +9,7 @@ var counter = 0;
 var n = 0;
 var m=1;
 var programState=0;
-var digitToShow = 3;
+var digitToShow = 1;
 var timeSinceLastDigitChange = new Date();
 
 Leap.loop(controllerOptions, function(frame) {
@@ -490,8 +490,8 @@ function CreateSignInItem(username, list){
 }
 
 function DrawLowerRightPanel(){
-  if(digitToShow === 3){
-    image(aslThree, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  if(digitToShow === 1){
+    image(aslOne, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
   else{
     image(aslFive, window.innerWidth/2, window.innerHeight/2, 0, 0);
@@ -505,11 +505,11 @@ function DetermineWhetherToSwitchDigits(){
 }
 
 function SwitchDigits(){
-  if(digitToShow === 3){
+  if(digitToShow === 1){
     digitToShow = 5;
   }
   else{
-    digitToShow = 3;
+    digitToShow = 1;
   }
   timeSinceLastDigitChange = new Date();
   n=0;
