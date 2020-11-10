@@ -9,7 +9,7 @@ var counter = 0;
 var n = 0;
 var m=1;
 var programState=0;
-var digitToShow = aslThree;
+var digitToShow = 3;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -479,4 +479,13 @@ function CreateSignInItem(username, list){
   item.id = String(username) + "_signins";
   item.innerHTML = 1;
   list.appendChild(item);
+}
+
+function DrawLowerRightPanel(){
+  if(digitToShow === 3){
+    image(aslThree, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else{
+    image(aslFive, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
 }
