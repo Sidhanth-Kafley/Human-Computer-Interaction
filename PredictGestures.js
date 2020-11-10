@@ -142,31 +142,35 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
   var canvasX1 = window.innerWidth/2 * normalizePrevJoint[0];
   var canvasY1 = window.innerHeight/2 * (1 - normalizePrevJoint[1]);
 
-
-  var r, g, b = 0;
+  // c = predictedClassLabels.get(testingSampleIndex);
+  // d = digitToShow;
+  // n++;
+  //
+  // m = ((n-1)*m + (c == d))/n;
+  // var r, g, b = 0;
 
   if (bone[j].type === 0) {
-    weight = 10;
-    r = 210;
-    g = 210;
-    b = 210;
+    weight = 20;
+    r = 255-(m *255);
+    g = m*255;
+    b = 0;
 
   } else if (bone[j].type === 1) {
-    weight = 7;
-    r = 169;
-    g = 169;
-    b = 169;
+    weight = 14;
+    r = 255-(m*210);
+    g = 210*m;
+    b = 0;
 
   } else if (bone[j].type === 2) {
-    weight = 5;
-    r = 105;
-    g = 105;
-    b = 105;
+    weight = 10;
+    r = 255-(m*169);
+    g = m*169;
+    b = 0;
 
   } else if (bone[j].type === 3) {
-    weight = 2;
-    r = 0;
-    g = 0;
+    weight = 4;
+    r = 255-(m*150);
+    g = m*150;
     b = 0;
   }
   strokeWeight(weight);
