@@ -237,11 +237,7 @@ function Test() {
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
   //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
-  var c = predictedClassLabels.get(testingSampleIndex);
-  var d = digitToShow;
-  n++;
-  m = ((n-1)*m + (c == d))/n;
-  console.log(n + " " + m + " " + c);
+
 }
 
 function GotResults(err, result) {
@@ -251,6 +247,11 @@ function GotResults(err, result) {
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
   //console.log(predictedClassLabels.get(testingSampleIndex));
+  var c = predictedClassLabels.get(testingSampleIndex);
+  var d = digitToShow;
+  n++;
+  m = ((n-1)*m + (c == d))/n;
+  console.log(n + " " + m + " " + c);
 }
 
 function CenterXData(){
