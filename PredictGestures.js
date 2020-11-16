@@ -11,6 +11,8 @@ var m=1;
 var programState=0;
 var digitToShow = 5;
 var timeSinceLastDigitChange = new Date();
+var averageScore = 0;
+var counter = 0;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -257,6 +259,9 @@ function GotResults(err, result) {
 
   m = ((n-1)*m + (c == d))/n;
   console.log(n + " " + m + " " + c);
+  averageScore +=m;
+  averageScore = averageScore/2;
+  console.log(averageScore);
 }
 
 function CenterXData(){
@@ -490,11 +495,35 @@ function CreateSignInItem(username, list){
 }
 
 function DrawLowerRightPanel(){
-  if(digitToShow === 1){
+  if(digitToShow === 0){
+    image(aslZero, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow ===1){
     image(aslOne, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
-  else{
+  else if(digitToShow === 2){
+    image(aslTwo, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow ===3){
+    image(aslThree, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 4){
+    image(aslFour, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow ===5){
     image(aslFive, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 6){
+    image(aslSix, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow ===7){
+    image(aslSeven, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 8){
+    image(aslEight, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow ===9){
+    image(aslNine, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
 }
 
@@ -505,12 +534,18 @@ function DetermineWhetherToSwitchDigits(){
 }
 
 function SwitchDigits(){
-  if(digitToShow === 1){
-    digitToShow = 5;
+  if(averageScore < 0.7){
+    if(digitToShow === 1){
+      digitToShow = 5;
+    }
+    else{
+      digitToShow = 1;
+    }
   }
   else{
-    digitToShow = 1;
+    digitToShow = 6;
   }
+
   timeSinceLastDigitChange = new Date();
   n=0;
 }

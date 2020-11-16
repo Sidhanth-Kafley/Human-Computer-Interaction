@@ -17,6 +17,14 @@ function setup() {
   arrowDown = loadImage('https://i.imgur.com/5QJps1f.jpg');
   arrowToward = loadImage('https://i.imgur.com/bOtXWSW.jpg');
   arrowAway = loadImage('https://i.imgur.com/0WBp1OF.jpg');
+  aslZero = loadImage('https://i.imgur.com/eNsIqwf.jpg');
   aslOne = loadImage('https://i.imgur.com/pKXOMng.jpg');
+  aslTwo = loadImage('https://i.imgur.com/qgmAO4J.jpg');
+  aslThree = loadImage('https://i.imgur.com/pgUxQMX.jpg');
+  aslFour = loadImage('https://i.imgur.com/rVEyPbJ.jpg');
   aslFive = loadImage('https://i.imgur.com/txGhiWW.jpg');
+  aslSix = loadImage('https://i.imgur.com/AD6gkgR.jpg');
+  aslSeven = loadImage('https://i.imgur.com/Q6OyXu6.jpg');
+  aslEight = loadImage('https://i.imgur.com/C4DDsKY.jpg');
+  aslNine = loadImage('https://i.imgur.com/L15hE6x.jpg');
 }
