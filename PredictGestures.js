@@ -9,7 +9,7 @@ var counter = 0;
 var n = 0;
 var m=1;
 var programState=0;
-var digitToShow = 5;
+var digitToShow = 1;
 var timeSinceLastDigitChange = new Date();
 var averageScore = 0;
 var counter = 0;
@@ -259,9 +259,6 @@ function GotResults(err, result) {
 
   m = ((n-1)*m + (c == d))/n;
   console.log(n + " " + m + " " + c);
-  averageScore +=m;
-  averageScore = averageScore/2;
-  console.log(averageScore);
 }
 
 function CenterXData(){
@@ -534,20 +531,91 @@ function DetermineWhetherToSwitchDigits(){
 }
 
 function SwitchDigits(){
-  if(averageScore < 0.7){
-    if(digitToShow === 1){
-      digitToShow = 5;
+  // roundOne();
+  // if(counter > 3  && m>0.7){
+  //   roundTwo();
+  //   if(counter > 6 && m>0.7){
+  //     roundThree();
+  //   }
+  // }
+  if(digitToShow === 1){
+    digitToShow = 5;
+  }
+  else if(digitToShow === 5){
+    if(m > 0.7){
+      digitToShow = 6;
     }
     else{
       digitToShow = 1;
     }
   }
-  else{
-    digitToShow = 6;
+  else if(digitToShow === 6){
+    if(m > 0.7){
+      digitToShow = 2;
+    }
+    else{
+      digitToShow = 5;
+    }
   }
-
-  timeSinceLastDigitChange = new Date();
+  else if(digitToShow === 2){
+    if(m > 0.7){
+      digitToShow = 7
+    }
+    else{
+      digitToShow = 6;
+    }
+  }
+  else if(digitToShow === 7){
+    if(m > 0.7){
+      digitToShow = 0;
+    }
+    else{
+      digitToShow = 2;
+    }
+  }
+  else if(digitToShow === 0){
+    if(m > 0.7){
+      digitToShow = 9;
+    }
+    else{
+      digitToShow = 7;
+    }
+  }
+  else if(digitToShow === 9){
+    if(m > 0.7){
+      digitToShow = 3;
+    }
+    else{
+      digitToShow = 0;
+    }
+  }
+  else if(digitToShow === 3){
+    if(m > 0.7){
+      digitToShow = 8;
+    }
+    else{
+      digitToShow = 9;
+    }
+  }
+  else if(digitToShow === 8){
+    if(m > 0.7){
+      digitToShow = 4;
+    }
+    else{
+      digitToShow = 3;
+    }
+  }
+  else if(digitToShow === 4){
+    if(m > 0.7){
+      digitToShow = 1;
+    }
+    else{
+      digitToShow = 8;
+    }
+  }
   n=0;
+  counter++;
+  timeSinceLastDigitChange = new Date();
 }
 
 function TimeToSwitchDigits(){
