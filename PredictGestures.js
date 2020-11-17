@@ -7,12 +7,13 @@ var controllerOptions = {};
 nj.config.printThreshold = 6;
 var counter = 0;
 var n = 0;
-var m=1;
+var m = 0.5;
 var programState=0;
-var digitToShow = 1;
+var digitToShow = 5;
 var timeSinceLastDigitChange = new Date();
-var averageScore = 0;
 var counter = 0;
+var testDigit = 5;
+var changeTime = false;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -55,16 +56,6 @@ function TrainKNNIfNotDoneYet(){
 function DrawImageToHelpUserPutTheirHandOverTheDevice(){
   image(img, 0, 0, window.innerWidth/2, window.innerHeight/2);
 }
-
-// image(arrowLeft, 0, 0, window.innerWidth/2, window.innerHeight/2);
-//
-// image(arrowDown, 0, 0, window.innerWidth/2, window.innerHeight/2);
-// image(arrowUp, 0, 0, window.innerWidth/2, window.innerHeight/2);
-// image(arrowToward, 0, 0, window.innerWidth/2, window.innerHeight/2);
-// image(arrowAway, 0, 0, window.innerWidth/2, window.innerHeight/2);
-
-
-
 function HandleState1(frame){
   HandleFrame(frame);
   //Test();
@@ -91,7 +82,7 @@ function HandleState1(frame){
 function HandleState2(frame){
   HandleFrame(frame);
   DrawLowerRightPanel();
-  DetermineWhetherToSwitchDigits();
+  DetermineWhetherToSwitchDigits()
   Test();
 }
 
@@ -143,13 +134,6 @@ function HandleBone(j, bone, weight, frame, fingerIndex, InteractionBox) {
 
   var canvasX1 = window.innerWidth/2 * normalizePrevJoint[0];
   var canvasY1 = window.innerHeight/2 * (1 - normalizePrevJoint[1]);
-
-  // c = predictedClassLabels.get(testingSampleIndex);
-  // d = digitToShow;
-  // n++;
-  //
-  // m = ((n-1)*m + (c == d))/n;
-  // var r, g, b = 0;
 
   if (bone[j].type === 0) {
     weight = 20;
@@ -217,7 +201,6 @@ function Train() {
     knnClassifier.addExample(features6.tolist(), 6);
     knnClassifier.addExample(features7.tolist(), 7);
     knnClassifier.addExample(features7Vega.tolist(), 7);
-    //knnClassifier.addExample(features7Fisher.tolist(), 7);
     knnClassifier.addExample(features7Menian.tolist(), 7);
     knnClassifier.addExample(features8.tolist(), 8);
     knnClassifier.addExample(features9.tolist(), 9);
@@ -242,8 +225,6 @@ function Test() {
   CenterZData();
   var currentTestingSample = oneFrameOfData.pick(null, null, null, testingSampleIndex).reshape(1, 120);
   var predictedLabel = knnClassifier.classify(currentTestingSample.tolist(), GotResults);
-  //console.log(testingSampleIndex + "    " + predictedClassLabels.get(testingSampleIndex));
-
 }
 
 function GotResults(err, result) {
@@ -252,9 +233,8 @@ function GotResults(err, result) {
     testingSampleIndex = 0;
   }
   predictedClassLabels.set(testingSampleIndex, parseInt(result.label));
-  //console.log(predictedClassLabels.get(testingSampleIndex));
   var c = predictedClassLabels.get(testingSampleIndex);
-  var d = digitToShow;
+  var d = testDigit;
   n++;
 
   m = ((n-1)*m + (c == d))/n;
@@ -519,8 +499,38 @@ function DrawLowerRightPanel(){
   else if(digitToShow === 8){
     image(aslEight, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
-  else if(digitToShow ===9){
+  else if(digitToShow === 9){
     image(aslNine, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 10){
+    image(aslZeroDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 11){
+    image(aslOneDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 12){
+    image(aslTwoDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 13){
+    image(aslThreeDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 14){
+    image(aslFourDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 15){
+    image(aslFiveDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 16){
+    image(aslSixDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 17){
+    image(aslSevenDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 18){
+    image(aslEightDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow === 19){
+    image(aslNineDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
 }
 
@@ -531,88 +541,215 @@ function DetermineWhetherToSwitchDigits(){
 }
 
 function SwitchDigits(){
-  // roundOne();
-  // if(counter > 3  && m>0.7){
-  //   roundTwo();
-  //   if(counter > 6 && m>0.7){
-  //     roundThree();
-  //   }
-  // }
   if(digitToShow === 1){
     digitToShow = 5;
+    testDigit = 5;
   }
   else if(digitToShow === 5){
     if(m > 0.7){
       digitToShow = 6;
+      testDigit = 6;
     }
     else{
       digitToShow = 1;
+      testDigit = 1;
     }
   }
   else if(digitToShow === 6){
     if(m > 0.7){
       digitToShow = 2;
+      testDigit = 2;
     }
     else{
       digitToShow = 5;
+      testDigit = 5;
     }
   }
+
   else if(digitToShow === 2){
     if(m > 0.7){
-      digitToShow = 7
+      digitToShow = 7;
+      testDigit = 7;
     }
     else{
       digitToShow = 6;
+      testDigit = 6;
     }
   }
+
   else if(digitToShow === 7){
-    if(m > 0.7){
-      digitToShow = 0;
+    if(m>0.7){
+      digitToShow = 3;
+      testDigit = 3;
     }
     else{
       digitToShow = 2;
+      testDigit = 2;
+    }
+  }
+
+  else if(digitToShow === 3){
+    if(m > 0.7){
+      digitToShow = 4;
+      testDigit = 4;
+    }
+    else{
+      digitToShow = 7;
+      testDigit = 7;
+    }
+  }
+
+  else if(digitToShow ===4){
+    if(m > 0.7){
+      digitToShow = 8;
+      testDigit = 8;
+    }
+    else{
+      digitToShow = 3;
+      testDigit = 3;
+    }
+  }
+
+  else if(digitToShow === 8){
+    if(m > 0.7){
+      digitToShow = 0;
+      testDigit = 0;
+    }
+    else{
+      digitToShow = 4;
+      testDigit = 4;
     }
   }
   else if(digitToShow === 0){
     if(m > 0.7){
       digitToShow = 9;
+      testDigit = 9;
     }
     else{
-      digitToShow = 7;
+      digitToShow = 8;
+      testDigit = 8;
     }
   }
+
   else if(digitToShow === 9){
     if(m > 0.7){
-      digitToShow = 3;
+      digitToShow = 11;
+      testDigit = 1;
     }
     else{
       digitToShow = 0;
+      testDigit = 0;
     }
   }
-  else if(digitToShow === 3){
-    if(m > 0.7){
-      digitToShow = 8;
-    }
-    else{
-      digitToShow = 9;
-    }
+
+//******************* Scaffolding 2 **************************//
+
+else if(digitToShow === 11){
+  digitToShow = 15;
+  testDigit = 5;
+}
+else{
+  digitToShow = 9;
+  testDigit = 9;
+}
+else if(digitToShow === 15){
+  if(m > 0.7){
+    digitToShow = 16;
+    testDigit = 6;
   }
-  else if(digitToShow === 8){
-    if(m > 0.7){
-      digitToShow = 4;
-    }
-    else{
-      digitToShow = 3;
-    }
+  else{
+    digitToShow = 11;
+    testDigit = 1;
   }
-  else if(digitToShow === 4){
-    if(m > 0.7){
-      digitToShow = 1;
-    }
-    else{
-      digitToShow = 8;
-    }
+}
+else if(digitToShow === 16){
+  if(m > 0.7){
+    digitToShow = 12;
+    testDigit = 2;
   }
+  else{
+    digitToShow = 15;
+    testDigit = 5;
+  }
+}
+
+else if(digitToShow === 12){
+  if(m > 0.7){
+    digitToShow = 17;
+    testDigit = 7;
+  }
+  else{
+    digitToShow = 16;
+    testDigit = 6;
+  }
+}
+
+else if(digitToShow === 17){
+  if(m>0.7){
+    digitToShow = 13;
+    testDigit = 3;
+  }
+  else{
+    digitToShow = 12;
+    testDigit = 2;
+  }
+}
+
+else if(digitToShow === 13){
+  if(m > 0.7){
+    digitToShow = 14;
+    testDigit = 4;
+  }
+  else{
+    digitToShow = 17;
+    testDigit = 7;
+  }
+}
+
+else if(digitToShow === 14){
+  if(m > 0.7){
+    digitToShow = 18;
+    testDigit = 8;
+  }
+  else{
+    digitToShow = 13;
+    testDigit = 3;
+  }
+}
+
+else if(digitToShow === 18){
+  if(m > 0.7){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 14;
+    testDigit = 4;
+  }
+}
+else if(digitToShow === 10){
+  if(m > 0.7){
+    digitToShow = 19;
+    testDigit = 9;
+  }
+  else{
+    digitToShow = 18;
+    testDigit = 8;
+  }
+}
+
+else if(digitToShow === 19){
+  if(m > 0.7){
+    //Scaffolding 3
+    changeTime = true;
+    digitToShow = 1;
+    testDigit = 1;
+  }
+  else{
+    digitToShow = 10;
+    testDigit = 0;
+  }
+}
   n=0;
   counter++;
   timeSinceLastDigitChange = new Date();
@@ -622,7 +759,14 @@ function TimeToSwitchDigits(){
   var currentTime = new Date();
   var timeLapsedInMilliseconds = currentTime - timeSinceLastDigitChange;
   var timeLapsedInSeconds = timeLapsedInMilliseconds/1000;
-  if (timeLapsedInSeconds > 5){
-      return true;
+  if(changeTime){
+    if (timeLapsedInSeconds > 2){
+        return true;
+    }
+  }
+  else{
+    if (timeLapsedInSeconds > 5){
+        return true;
+    }
   }
 }
