@@ -633,8 +633,8 @@ function SwitchDigits(){
 
   else if(digitToShow === 9){
     if(m > 0.7){
-      digitToShow = 11;
-      testDigit = 1;
+      digitToShow = 19;
+      testDigit = 9;
     }
     else{
       digitToShow = 0;
@@ -644,93 +644,46 @@ function SwitchDigits(){
 
 //******************* Scaffolding 2 **************************//
 
-else if(digitToShow === 11){
-  digitToShow = 15;
-  testDigit = 5;
-}
-else{
-  digitToShow = 9;
-  testDigit = 9;
-}
-else if(digitToShow === 15){
-  if(m > 0.7){
-    digitToShow = 16;
-    testDigit = 6;
-  }
-  else{
-    digitToShow = 11;
-    testDigit = 1;
-  }
-}
-else if(digitToShow === 16){
-  if(m > 0.7){
-    digitToShow = 12;
-    testDigit = 2;
-  }
-  else{
-    digitToShow = 15;
-    testDigit = 5;
-  }
-}
 
-else if(digitToShow === 12){
-  if(m > 0.7){
-    digitToShow = 17;
-    testDigit = 7;
-  }
-  else{
-    digitToShow = 16;
-    testDigit = 6;
-  }
-}
-
-else if(digitToShow === 17){
-  if(m>0.7){
-    digitToShow = 13;
-    testDigit = 3;
-  }
-  else{
-    digitToShow = 12;
-    testDigit = 2;
-  }
-}
-
-else if(digitToShow === 13){
-  if(m > 0.7){
-    digitToShow = 14;
-    testDigit = 4;
-  }
-  else{
-    digitToShow = 17;
-    testDigit = 7;
-  }
-}
-
-else if(digitToShow === 14){
-  if(m > 0.7){
-    digitToShow = 18;
-    testDigit = 8;
-  }
-  else{
-    digitToShow = 13;
-    testDigit = 3;
-  }
-}
-
-else if(digitToShow === 18){
+else if(digitToShow === 19){
   if(m > 0.7){
     digitToShow = 10;
     testDigit = 0;
   }
   else{
+    digitToShow = 9;
+    testDigit = 9;
+  }
+}
+
+else if(digitToShow === 10){
+  if(m > 0.7){
+    digitToShow = 18;
+    testDigit = 8;
+  }
+  else{
+    digitToShow = 19;
+    testDigit = 9;
+  }
+}
+
+else if(digitToShow === 18){
+  if(m > 0.7){
     digitToShow = 14;
     testDigit = 4;
   }
+  else{
+
+    digitToShow = 10;
+    testDigit = 0;
+  }
 }
-else if(digitToShow === 10){
+
+else if(digitToShow === 14){
   if(m > 0.7){
-    digitToShow = 19;
-    testDigit = 9;
+
+    digitToShow = 13;
+    testDigit = 3;
   }
   else{
     digitToShow = 18;
@@ -738,16 +691,74 @@ else if(digitToShow === 10){
   }
 }
 
-else if(digitToShow === 19){
+else if(digitToShow === 13){
   if(m > 0.7){
+    digitToShow = 17;
+    testDigit = 7;
+  }
+  else{
+    digitToShow = 14;
+    testDigit = 4;
+  }
+}
+
+else if(digitToShow === 17){
+  if(m>0.7){
+    digitToShow = 12;
+    testDigit = 2;
+
+  }
+  else{
+    digitToShow = 13;
+    testDigit = 3;
+  }
+}
+
+else if(digitToShow === 12){
+  if(m > 0.7){
+    digitToShow = 16;
+    testDigit = 6;
+  }
+  else{
+    digitToShow = 17;
+    testDigit = 7;
+  }
+}
+
+else if(digitToShow === 16){
+  if(m > 0.7){
+    digitToShow = 15;
+    testDigit = 5;
+  }
+  else{
+    digitToShow = 12;
+    testDigit = 2;
+  }
+}
+
+else if(digitToShow === 15){
+  if(m > 0.7){
+    digitToShow = 11;
+    testDigit = 1;
+
+  }
+  else{
+    digitToShow = 16;
+    testDigit = 6;
+  }
+}
+
+else if(digitToShow === 11){
+
+  if(m> 0.7){
     //Scaffolding 3
     changeTime = true;
     digitToShow = 1;
     testDigit = 1;
   }
   else{
-    digitToShow = 10;
-    testDigit = 0;
+    digitToShow = 15;
+    testDigit = 5;
   }
 }
   n=0;

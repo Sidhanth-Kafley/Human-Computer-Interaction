@@ -29,8 +29,9 @@ function setup() {
   aslNine = loadImage('https://i.imgur.com/dObfcoO.jpg');
   aslZeroDigit = loadImage('https://i.imgur.com/3Uo7rVL.jpg');
   aslOneDigit = loadImage('https://i.imgur.com/0UbYtfk.jpg');
+  aslTwoDigit = loadImage('https://i.imgur.com/BDqc8LL.jpg');
   aslThreeDigit = loadImage('https://i.imgur.com/p2wSuN6.jpg');
-  aslFourDigit = loadImage('blob:https://imgur.com/3eed7e95-fde3-42e9-b7c1-2277fadf3529');
+  aslFourDigit = loadImage('https://i.imgur.com/Kvt5Zm8.jpg');
   aslFiveDigit = loadImage('https://i.imgur.com/CL0KpjA.jpg');
   aslSixDigit = loadImage('https://i.imgur.com/vKQHrzo.jpg');
   aslSevenDigit = loadImage('https://i.imgur.com/V1sPABb.jpg');
