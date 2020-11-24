@@ -9,11 +9,14 @@ var counter = 0;
 var n = 0;
 var m = 0.5;
 var programState=0;
-var digitToShow = 5;
+var digitToShow = 19;
 var timeSinceLastDigitChange = new Date();
 var counter = 0;
 var testDigit = 5;
 var changeTime = false;
+var score=0;
+var attempts = 3;
+var userScore = 1;
 
 Leap.loop(controllerOptions, function(frame) {
   clear();
@@ -532,6 +535,30 @@ function DrawLowerRightPanel(){
   else if(digitToShow === 19){
     image(aslNineDigit, window.innerWidth/2, window.innerHeight/2, 0, 0);
   }
+  else if(digitToShow == 20){
+    image(question1, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 21){
+    image(question2, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 22){
+    image(question3, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 23){
+    image(question4, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 24){
+    image(question5, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 25){
+    image(question6, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 26){
+    image(question7, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
+  else if(digitToShow == 27){
+    image(question8, window.innerWidth/2, window.innerHeight/2, 0, 0);
+  }
 }
 
 function DetermineWhetherToSwitchDigits(){
@@ -646,20 +673,19 @@ function SwitchDigits(){
 
 
 else if(digitToShow === 19){
-  if(m > 0.7){
     digitToShow = 10;
     testDigit = 0;
-  }
-  else{
-    digitToShow = 9;
-    testDigit = 9;
-  }
 }
 
 else if(digitToShow === 10){
-  if(m > 0.7){
+  attempts = 3;
+  if(m > 0.6){
     digitToShow = 18;
     testDigit = 8;
+    // digitToShow = 13;
+    // testDigit = 3;
+    // digitToShow = 15;
+    // testDigit = 5;
   }
   else{
     digitToShow = 19;
@@ -668,7 +694,7 @@ else if(digitToShow === 10){
 }
 
 else if(digitToShow === 18){
-  if(m > 0.7){
+  if(m > 0.6){
     digitToShow = 14;
     testDigit = 4;
   }
@@ -680,7 +706,7 @@ else if(digitToShow === 18){
 }
 
 else if(digitToShow === 14){
-  if(m > 0.7){
+  if(m > 0.6){
 
     digitToShow = 13;
     testDigit = 3;
@@ -692,18 +718,20 @@ else if(digitToShow === 14){
 }
 
 else if(digitToShow === 13){
-  if(m > 0.7){
+  if(m > 0.6){
     digitToShow = 17;
     testDigit = 7;
   }
   else{
     digitToShow = 14;
     testDigit = 4;
+    // digitToShow = 10;
+    // testDigit = 0;
   }
 }
 
 else if(digitToShow === 17){
-  if(m>0.7){
+  if(m>0.6){
     digitToShow = 12;
     testDigit = 2;
 
@@ -715,7 +743,7 @@ else if(digitToShow === 17){
 }
 
 else if(digitToShow === 12){
-  if(m > 0.7){
+  if(m > 0.6){
     digitToShow = 16;
     testDigit = 6;
   }
@@ -726,7 +754,7 @@ else if(digitToShow === 12){
 }
 
 else if(digitToShow === 16){
-  if(m > 0.7){
+  if(m > 0.6){
     digitToShow = 15;
     testDigit = 5;
   }
@@ -737,7 +765,7 @@ else if(digitToShow === 16){
 }
 
 else if(digitToShow === 15){
-  if(m > 0.7){
+  if(m > 0.6){
     digitToShow = 11;
     testDigit = 1;
 
@@ -745,22 +773,130 @@ else if(digitToShow === 15){
   else{
     digitToShow = 16;
     testDigit = 6;
+    // digitToShow = 10;
+    // testDigit = 0;
+
   }
 }
 
 else if(digitToShow === 11){
-
-  if(m> 0.7){
-    //Scaffolding 3
-    changeTime = true;
-    digitToShow = 1;
-    testDigit = 1;
+  if(m> 0.6){
+//     //Scaffolding 3
+//     changeTime = true;
+//     digitToShow = 1;
+//     testDigit = 1;
+    digitToShow = 20;
+    testDigit = 6;
   }
   else{
     digitToShow = 15;
     testDigit = 5;
   }
 }
+//********************* quiz ***************************************//
+
+else if(digitToShow === 20){
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 21;
+    testDigit = 9;
+  }
+}
+else if(digitToShow === 21){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 22;
+    testDigit = 0;
+  }
+}
+
+else if(digitToShow === 22){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 23;
+    testDigit = 6;
+  }
+}
+
+else if(digitToShow === 23){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 24;
+    testDigit = 6;
+  }
+}
+
+else if(digitToShow === 24){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 25;
+    testDigit = 2;
+  }
+}
+
+else if(digitToShow === 25){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 26;
+    testDigit = 9;
+  }
+}
+else if(digitToShow === 26){
+
+  if(m < 0.6){
+    attempts--;
+  }
+  if(attempts <= 0){
+    digitToShow = 10;
+    testDigit = 0;
+  }
+  else{
+    digitToShow = 27;
+    testDigit = 7;
+  }
+}
+
   n=0;
   counter++;
   timeSinceLastDigitChange = new Date();

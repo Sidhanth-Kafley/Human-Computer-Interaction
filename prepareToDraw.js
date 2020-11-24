@@ -37,4 +37,12 @@ function setup() {
   aslSevenDigit = loadImage('https://i.imgur.com/V1sPABb.jpg');
   aslEightDigit = loadImage('https://i.imgur.com/OLdbXjr.jpg');
   aslNineDigit = loadImage('https://i.imgur.com/yuI5xXC.jpg');
+  question1 = loadImage('https://i.imgur.com/SQwPuLv.jpg');
+  question2 = loadImage('https://i.imgur.com/9ycB9bm.jpg');
+  question3 = loadImage('https://i.imgur.com/W9IoGU3.jpg');
+  question4 = loadImage('https://i.imgur.com/YwjezN6.jpg');
+  question5 = loadImage('https://i.imgur.com/DRZ4mxW.jpg');
+  question6 = loadImage('https://i.imgur.com/4quYMBT.jpgs');
+  question7 = loadImage('https://i.imgur.com/izuTKFY.jpg');
+  question8 = loadImage('https://i.imgur.com/4w6FGyr.jpg');
 }
